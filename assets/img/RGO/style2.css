@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+        }
+        /* custom scroll bar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        ::selection{
+          background: rgb(0,123,255,0.3);
+        }
+        .content{
+          max-width: 1250px;
+          margin: auto;
+          padding: 0 30px;
+        }
+        .navbar{
+          position: fixed;
+          width: 100%;
+          z-index: 2;
+          padding: 20px 0;
+          transition: all 0.3s ease;
+        }
+        .navbar.sticky{
+          background: #881c1c;
+          padding: 10px 0;
+          box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+        }
+        .navbar .content {
+          display: flex;
+          align-items: center;
+          justify-content: center; /* Center the content */
+        }
+        .navbar .logo a{
+          color: #fff;
+          font-size: 30px;
+          font-weight: 600;
+          text-decoration: none;
+        }
+        .navbar .menu-list{
+          display: inline-flex;
+          flex: 1; /* Distribute items equally */
+          justify-content: space-between;
+        }
+        .menu-list li{
+          list-style: none;
+        }
+        .menu-list li a{
+          color: #fff;
+          font-size: 18px;
+          font-weight: 500;
+          margin-left: 25px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        .menu-list li a:hover{
+          color: #007bff;
+        }
+        .banner{
+          background: url("assets/img/CEAFA-3D.jpg") no-repeat;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          align-items: center;
+          
+        }
+        
+        .banner .bsu_logo {
+          position: absolute;
+          top: 25%;
+          left: 8%; /* Adjust the left position as needed */
+          max-width: 10%;
+          transform: translate(0, -50%);
+        }
+        
+        .banner .rgo_logo {
+          position: absolute;
+          top: 27%;
+          right: 5%; /* Adjust the right position as needed */
+          max-width: 18%;
+          transform: translate(0, -50%);
+        }
+
+        .banner .home_logo {
+          position: absolute;
+          top: 68%; 
+          left: 50%; 
+          transform: translate(-50%, -50%); 
+          max-width: 50%; 
+        }
+
+        .about{
+          padding: 30px 0;
+        }
+        .about .title{
+          font-size: 38px;
+          font-weight: 700;
+        }
+        .about p{
+          padding-top: 20px;
+          text-align: justify;
+        }
+        .icon{
+          color: #fff;
+          font-size: 20px;
+          cursor: pointer;
+          display: none;
+        }
+        .menu-list .cancel-btn{
+          position: absolute;
+          right: 30px;
+          top: 20px;
+        }
+        @media (max-width: 1230px) {
+          .content{
+              padding: 0 60px;
+          }
+        }
+        @media (max-width: 1100px) {
+          .content{
+              padding: 0 40px;
+          }
+        }
+        @media (max-width: 900px) {
+          .content{
+              padding: 0 30px;
+          }
+        }
+        @media (max-width: 868px) {
+          body.disabled{
+              overflow: hidden;
+          }
+          .icon{
+              display: block;
+          }
+          .icon.hide{
+              display: none;
+          }
+          .navbar .menu-list{
+              position: fixed;
+              height: 100vh;
+              width: 100%;
+              max-width: 400px;
+              left: -100%;
+              top: 0px;
+              display: block;
+              padding: 40px 0;
+              text-align: center;
+              background: #222;
+              transition: all 0.3s ease;
+          }
+          .navbar.show .menu-list{
+              left: 0%;
+          }
+          .navbar .menu-list li{
+              margin-top: 45px;
+          }
+          .navbar .menu-list li a{
+              font-size: 23px;
+              margin-left: -100%;
+              transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }
+          .navbar.show .menu-list li a{
+              margin-left: 0px;
+          }
+        }
+        @media (max-width: 380px) {
+          .navbar .logo a{
+              font-size: 27px;
+          }
+        }
+
+      .filter {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-right: 1px solid #ccc;
+        width: 300px;
+        height: 750px;
+        position: fixed;
+        top:65px;
+      }
+      
+      .filter h2 {
+          font-size: 20px;
+          margin-bottom: 10px;
+      }
+      
+      .filter-item {
+          margin-bottom: 15px;
+      }
+      
+      .filter-item label {
+          display: block;
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+      
+      .filter-item select,
+      .filter-item input[type="number"] {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+      
+      #apply-filter {
+          background-color: #007BFF;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+      }
+      
+      #apply-filter:hover {
+          background-color: #0056b3;
+      }
+
+      .filter-item input[type="radio"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 25%;
+        border: 2px solid #ccc;
+        outline: none;
+        cursor: pointer;
+        margin-right: 10px;
+        align-items: center;
+        text-align: center;
+    }
+    
+.filter-item input[type="radio"]:checked {
+  background-color: #007BFF; 
+  border: 2px solid #007BFF; 
+}
+
+.filter-item .price-range {
+  display: flex;
+  align-items: center;
+}
+
+.filter-item .price-range input[type="number"] {
+  width: 50px; 
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.filter-item .price-range .dash {
+  margin: 0 10px;
+}
