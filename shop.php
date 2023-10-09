@@ -28,15 +28,26 @@
                 <li><a href="#">Contact</a></li>
                 <li><a href="shop.php">Online Catering</a></li>
                 <li><a href="#">More</a></li>
-                <li><a href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a></li>
                 <a style= "color: white">GCH, Alangilan, Batangas City</a>
                 <li><a href="#"><i class="fas fa-user"></i></a></li>
             </ul>
-            <div class="icon menu-btn">
-                <i class="fas fa-bars"></i>
+            <div class="navbar-row-wrapper">
+            <div class="navbar-row">
+                <div class="logo">
+                    <img src="assets/img/rgo5.png" alt="R-go Logo" class="nav-image">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div><a href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a>
+                </div>
             </div>
         </div>
-    </nav>
+        <div class="icon menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
   <!-- Navbar end -->
   <div class="filter-container">
   <div class="filter">
