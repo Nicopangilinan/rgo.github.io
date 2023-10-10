@@ -72,6 +72,7 @@
           background-position: center;
           background-attachment: fixed;
           align-items: center;
+          position: relative;
           
         }
         
@@ -93,7 +94,7 @@
 
         .banner .home_logo {
           position: absolute;
-          top: 60%; 
+          top: 50%; 
           left: 50%; 
           transform: translate(-50%, -50%); 
           max-width: 50%; 
@@ -103,7 +104,7 @@
           padding: 30px 0;
         }
         .about .title{
-          font-size: 38px;
+          font-size: 35px;
           font-weight: 700;
         }
         .about p{
@@ -262,4 +263,96 @@
 
 .filter-item .price-range .dash {
   margin: 0 10px;
+}
+
+/*BUTTON STYLE*/
+.btn1 {
+  position: absolute;
+  top: calc(78%); /* Adjust the top position as needed to place it below the home_logo */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  width: 250px;
+  height: 75px;
+  background-color: #881c1c; /* Set the background color */
+  border-radius: 30px;
+  border: 0px solid #e7efff;
+  transition: all 0.2s ease;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff; /* Set the text color */
+  text-shadow: 0 1px #8b8888;
+}
+
+.btn1:hover {
+  box-shadow: 0 4px 3px 1px #ea4e4e, 0 6px 8px #a63333, 0 -4px 4px #df4b4bd8, 0 -6px 4px #cb5555, inset 0 0 3px 3px #4e0f0f;
+}
+
+.btn1:active {
+  box-shadow: 0 4px 3px 1px #ee5858, 0 6px 8px #e24a4a, 0 -4px 4px #eb2a2a, 0 -6px 4px #e94a4a, inset 0 0 5px 3px #e64f4fb8, inset 0 0 30px #ff0000;
+}
+
+.btn1:focus {
+  box-shadow: 0 4px 3px 1px #d53535, 0 6px 8px #d13f3f, 0 -4px 4px #e75454, 0 -6px 4px #de3838, inset 0 0 5px 3px #d73636, inset 0 0 30px #da4444;}
+
+  
+/*FOOTER*/
+.footer {
+  background-color: #333; /* Dark grey background color */
+  color: white;
+  padding: 40px;
+}
+
+.footer-content {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  margin-left:120px ;
+  flex: 1;
+}
+.left-content p {
+  font-size: 11px;
+  font-weight: lighter;
+  color: #dbdbdb;
+}
+.right-content {
+  flex: 1;
+  text-align: center;
+}
+
+.logo {
+  scale: 170%;
+  max-width: 150px;
+  margin: 10 auto;
+  
+  
+}
+
+.social-icons {
+  width: fit-content;
+  margin-top: 50px;
+  margin-left: 40%;
+  scale: 170%;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .social-icons,
+  .copyright-text {
+    text-align: center;
+  }
 }

@@ -107,6 +107,18 @@ $allItems = implode(', ', $items);
                         <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
                     </div>
                     <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
+                    </div>
+                    <div class="form-group">
                         <input type="submit" name="action" value="order" class="btn btn-danger btn-block">
                     </div>
                 </form>
