@@ -58,33 +58,29 @@ $allItems = implode(', ', $items);
 
 <body>
     <!-- Navbar start -->
-    <nav class="navbar navbar-expand-md bg-#881c1c navbar-#881c1c" style="margin-bottom: 40px;">
-        <a class="navbar-brand" href="homepage.php">
-            <img src="assets/img/rgo2.png" 
-            style="max-height:50px; margin-left: 70px; margin-right: 30px; margin-top: -15px; margin-bottom: -15px; scale: 125%">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse w-100" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="shop.php" style="color: white;">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="checkout.php" style="color: white;">Checkout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php" id="logout-link" style="color: white;">Exit Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php" style="color: white;">
-                        <i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span>
-                    </a>
-                </li>
-            </ul>
+    <nav class="navbar">
+    <div class="logo">
+        <div class="back-btn">
+            <i class="fas fa-arrow-left"></i> <!-- Add your back button icon here -->
         </div>
-    </nav>
+        <img src="assets/img/rgow.png" alt="R-go Logo" class="nav-image">
+    </div>
+    <div class="line-divider"></div>
+    <div class="info-text">Cater Basic needs information</div>
+
+    <ul class="menu-list">
+        <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <li><a href="cart.php"><i class="fas fa-shopping-cart"></i><span id="cart-item" class="badge badge-danger"></span></a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="fas fa-user"></i></a></li>
+    </ul>
+    <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
 
     <div class="container4">
         <div class="row justify-content-center h-100"> <!-- Add h-100 to make the row full height -->

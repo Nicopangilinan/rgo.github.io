@@ -330,10 +330,10 @@
 }
 
 .logo {
-  scale: 170%;
+  scale: 90%;
   max-width: 150px;
-  margin: 10 auto;
-  
+  margin-bottom: -50px;
+  margin-right: -100px;
   
 }
 

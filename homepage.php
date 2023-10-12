@@ -61,13 +61,13 @@
                 <p>Copyright © 2023</p>
             </div>
             <div class="right-content">
-                <img src="assets/img/rgo4.png" alt="Your Logo" class="logo">
+                <img href="https://dione.batstate-u.edu.ph/ws/#/" src="assets/img/red.png" alt="Your Logo" class="logo">
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-google"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/RGOAlangilanCampus"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/BatStateUTheNEU"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/c/BatangasStateUniversityOfficial"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.google.com/maps/place/Batangas+State+University-Alangilan+Campus/@13.7842203,121.0717808,17z/data=!4m14!1m7!3m6!1s0x33bd0fe5e8d3f1e3:0x5d4c0eab733fc15!2sBatangas+State+University+–+Gov.+Pablo+Borbon+Campus+II!8m2!3d13.7842151!4d121.0743611!16s%2Fg%2F1vg_4v1t!3m5!1s0x33bd0ff100000001:0x6e553c2c569f211f!8m2!3d13.7840845!4d121.0743859!16s%2Fg%2F11bc7qwd_q?entry=ttu"><i class="fab fa-google"></i></a>
+                    <a href="https://www.linkedin.com/school/batstateutheneu/"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
