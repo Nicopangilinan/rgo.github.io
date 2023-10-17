@@ -81,7 +81,7 @@
       .search-bar {
           display: flex; /* Added display property */
           align-items: center; /* Center items vertically */
-          width: 70%;
+          width: 50%;
       }
       
       .search-bar input {
@@ -96,12 +96,7 @@
       .nav-image {
           width: 200px; /* Adjust the width as needed */
           height: auto;
-      }
-      
-      .info-text {
-        flex-grow: 1;
-        text-align: right;
-      }
+      }  
 
       .back-btn {
         font-size: 24px;
@@ -111,15 +106,19 @@
     }
     
     .line-divider {
-      height: 100%;
-      width: 1px; /* This creates a vertical divider */
-      background: #fff; /* Change the color of the divider */
-      margin: 0 10px; /* Adjust as needed */
+      display: block; /* Change the display property to block */
+      height: 60px; /* Set the height of the line divider */
+      background: #fff; /* Set the background color of the line divider */
+      margin: 0 10px;
+      color: #fff;
+      
     }
     
     .info-text {
         color: #fff; /* Change the text color */
-        font-size: 18px; /* Adjust the font size as needed */
+        font-size: 30px; /* Adjust the font size as needed */
+        flex-grow: 1;
+        text-align: left;
     }
       
       
@@ -446,13 +445,54 @@ input[type="range"]::-moz-range-thumb {
 
 .container4 {
   position: relative;
-  background-color: hsla(244, 16%, 92%, 0.6);
+  background-color: hsla(249, 17%, 92%, 0.913);
   border: 2px solid hsla(0, 0%, 0%, 0.75);
   margin: 1.5rem auto; /* Adjust margin as needed */
   backdrop-filter: blur(2px);
   border-radius: 1rem;
   padding: 20px;
   max-width: 60%; /* Adjust the maximum width as needed */
-  text-align: center; /* Center text content */
+  text-align:left; /* Center text content */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Correct the box-shadow syntax */
+}
+
+.dropdown-menu {
+  min-width: 120px;
+  height: auto;
+  left: 0;
+  right: auto;
+  transform: translateX(-50%);
+ }
+ 
+ .dropdown-menu li a {
+  font-size: 18px;
+  color: black;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+ }
+ 
+ .dropdown-menu li a:hover {
+  background-color: #f5f5f5;
+ }
+
+ .form-group {
+  margin-bottom: 15px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }

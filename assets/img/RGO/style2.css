@@ -65,15 +65,14 @@
         .menu-list li a:hover{
           color: #007bff;
         }
-        .banner{
-          background: url("assets/img/CEAFA-3D.jpg") no-repeat;
+        .banner {
+          background-color: #ff0000; /* Red background color */
           height: 100vh;
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
           align-items: center;
-          
-        }
+      }
         
         .banner .bsu_logo {
           position: absolute;

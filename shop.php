@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
-    <link rel='stylesheet' href='shop.css' />
+    <title>Catering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+  <link rel="stylesheet" href="shop.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar" style="padding:2px;">
         <div class="logo">
             <img src="assets/img/rgow.png" alt="R-go Logo" class="nav-image">
         </div>
+        <div class="line-divider">|</div>
         <div class="search-bar">
             <input type="text" placeholder="Search...">
         </div>
@@ -22,7 +26,11 @@
                 </div>
             <li><a href="cart.php"><i class="fas fa-shopping-cart"></i><span id="cart-item" class="badge badge-danger"></span></a></li>
             <li class="divider"></li>
-            <li><a href="#"><i class="fas fa-user"></i></a></li>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
+          <ul class="dropdown-menu">
+        <li><a href="#">My Orders</a></li>
+       <li><a href="#">Logout</a></li>
         </ul>
     </div>
     <div class="icon menu-btn">
@@ -111,7 +119,6 @@
 <div class="row mt-2 pb-3">
         <?php
   			include 'config.php';
-        include 'config.php';
         $stmt = $conn->prepare('SELECT * FROM product');
         $stmt->execute();
         $result = $stmt->get_result();
@@ -159,7 +166,68 @@
     <?php endwhile; ?>
 </div>
 </section>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+  <script>
+  document.getElementById('logout-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = 'logout.php'; // Redirect to logout script
+    }
+  });
+</script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+    // Send product details in the server
+    $(".addItemBtn").click(function(e) {
+      e.preventDefault();
+      var $form = $(this).closest(".form-submit");
+      var pid = $form.find(".pid").val();
+      var pname = $form.find(".pname").val();
+      var pprice = $form.find(".pprice").val();
+      var pimage = $form.find(".pimage").val();
+      var pcode = $form.find(".pcode").val();
+
+      var pqty = $form.find(".pqty").val();
+
+      $.ajax({
+        url: 'action.php',
+        method: 'post',
+        data: {
+          pid: pid,
+          pname: pname,
+          pprice: pprice,
+          pqty: pqty,
+          pimage: pimage,
+          pcode: pcode
+        },
+        success: function(response) {
+          $("#message").html(response);
+          window.scrollTo(0, 0);
+          load_cart_item_number();
+        }
+      });
+    });
+
+    // Load total no.of items added in the cart and display in the navbar
+    load_cart_item_number();
+
+    function load_cart_item_number() {
+      $.ajax({
+        url: 'action.php',
+        method: 'get',
+        data: {
+          cartItem: "cart_item"
+        },
+        success: function(response) {
+          $("#cart-item").html(response);
+        }
+      });
+    }
+  });
+  </script>
+
 <script>
 var Search = {
   

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
   <link rel="stylesheet" href="shop.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <style>
 /* Buttons */
     .btn {
@@ -33,34 +34,36 @@
   </style>
 <body>
   <!-- Navbar start -->
-  <nav class="navbar navbar-expand-md bg-#881c1c navbar-#881c1c" style="margin-bottom: 40px; ">
-    <a class="navbar-brand" href="homepage.php">
-      <img src="assets/img/rgo2.png" 
-      style="max-height: 50px; margin-left: 70px; margin-right: 30px; margin-top: -15px; margin-bottom: -15px; scale: 125%" alt="Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse w-100" id="collapsibleNavbar">
-      <ul class="navbar-nav justify-content-between">
-        <li class="nav-item">
-          <a class="nav-link" href="shop.php" style="color: white;">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="checkout.php" style="color: white;">Checkout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php" id="logout-link" style="color: white;">Exit Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="cart.php" style="color: white;">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-item" class="badge badge-danger"></span>
-          </a>
-        </li>
-      </ul>
+  <nav class="navbar">
+    <div class="logo">
+        <div class="back-btn">
+            <i class="fas fa-arrow-left"></i> <!-- Add your back button icon here -->
+        </div>
+        <img src="assets/img/rgow.png" alt="R-go Logo" class="nav-image">
     </div>
-  </nav>
+    <div class="line-divider">|</div>
+    <div class="info-text">Food Cart!</div>
+
+    <ul class="menu-list">
+        <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+        </div>
+        <li><a href="cart.php"><i class="fas fa-shopping-cart"></i><span id="cart-item" class="badge badge-danger"></span></a></li>
+        <li class="divider"></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
+          <ul class="dropdown-menu">
+          <li><a href="#">My Orders</a></li>
+       <li><a href="#">Logout</a></li>
+ </ul>
+</li>
+    </div>
+</li>
+    </ul>
+    <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
 
   <div class="container3">
     <div class="row justify-content-center">
@@ -194,7 +197,14 @@
       window.location.href = 'index.php'; // Redirect to logout script
     }
   });
+
 </script>
+<script>
+  document.getElementById("logout").addEventListener("click", function() {
+    // Perform the logout action, e.g., redirect to the logout page
+    window.location.href = "logout.php"; // Change the URL as needed
+});
+  </script>
 </body>
 
 </html>

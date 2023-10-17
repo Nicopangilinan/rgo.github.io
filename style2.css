@@ -80,7 +80,7 @@
           position: absolute;
           top: 25%;
           left: 8%; /* Adjust the left position as needed */
-          max-width: 10%;
+          width: 10%;
           transform: translate(0, -50%);
         }
         

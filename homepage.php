@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="script.js"></script>
+    <style>
+        body {
+          background: url("CEAFA-3D.jpg") no-repeat;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          align-items: center;
+}
+</style>
     
 </head>
 
