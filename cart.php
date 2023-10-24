@@ -36,9 +36,10 @@
   <!-- Navbar start -->
   <nav class="navbar">
     <div class="logo">
-        <div class="back-btn">
-            <i class="fas fa-arrow-left"></i> <!-- Add your back button icon here -->
-        </div>
+      <a class="back-btn" href="/shop.php">
+        <i class="fas fa-arrow-left"></i> <!-- Add your back button icon here -->
+      </a>
+
         <img src="assets/img/rgow.png" alt="R-go Logo" class="nav-image">
     </div>
     <div class="line-divider">|</div>
