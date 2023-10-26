@@ -356,3 +356,17 @@
     text-align: center;
   }
 }
+
+.breadcrumb {
+  padding: 20px;
+  font-size: 20px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}

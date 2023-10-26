@@ -21,18 +21,23 @@ $allItems = implode(', ', $items);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Sahil Kumar">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-    <link rel="stylesheet" href="shop.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Shopping Cart System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+  <link rel="stylesheet" href="shop.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
     <style>
       body {
-            background-image: url('assets/img/CEAFA.jpg');
+            background-image: url('assets/img/CEAFA-3D.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -78,7 +83,7 @@ $allItems = implode(', ', $items);
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
           <ul class="dropdown-menu">
-          <li><a href="#">My Orders</a></li>
+          <li><a href="myorder.php">My Orders</a></li>
        <li><a href="#">Logout</a></li>
  </ul>
 </li>
@@ -89,6 +94,15 @@ $allItems = implode(', ', $items);
         <i class="fas fa-bars"></i>
     </div>
 </nav>
+<div class="breadcrumb">
+    <a href="homepage.php">Home</a>
+    <span>&gt;</span>
+    <a href="shop.php">Food Menu</a>
+    <span>&gt;</span>
+    <a href="cart.php">Food Cart</a>
+    <span>&gt;</span>
+    Cater Basic Needs Information
+</div>
 
 
 <div class="container4">

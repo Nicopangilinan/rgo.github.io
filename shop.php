@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="shop.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-
 </head>
 <body>
 <nav class="navbar" style="padding:2px;">
@@ -29,7 +28,7 @@
             <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
           <ul class="dropdown-menu">
-        <li><a href="#">My Orders</a></li>
+        <li><a href="myorder.php">My Orders</a></li>
        <li><a href="#">Logout</a></li>
         </ul>
     </div>
@@ -37,6 +36,11 @@
         <i class="fas fa-bars"></i>
     </div>
 </nav>
+<div class="breadcrumb">
+    <a href="homepage.php">Home</a>
+    <span>&gt;</span>
+    Food Menu
+</div>
 <div class="conts">
 <form role="search" class="search-form" id="search-form" action="#" method="post">
   

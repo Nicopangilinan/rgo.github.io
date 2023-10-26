@@ -496,3 +496,18 @@ input[type="range"]::-moz-range-thumb {
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+.breadcrumb {
+  padding: 20px;
+  background-color: #fff;
+  font-size: 20px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}

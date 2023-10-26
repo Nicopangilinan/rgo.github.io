@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Shopping Cart System</title>
+  <title>My Orders</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
   <link rel="stylesheet" href="shop.css" />
@@ -137,6 +137,17 @@
         <i class="fas fa-bars"></i>
     </div>
 </nav>
+<div class="breadcrumb">
+    <a href="homepage.php">Home</a>
+    <span>&gt;</span>
+    <a href="shop.php">Food Menu</a>
+    <span>&gt;</span>
+    <a href="cart.php">Food Cart</a>
+    <span>&gt;</span>
+    <a href="checkout.php">Cater Basic Needs Information</a>
+    <span>&gt;</span>
+    My Orders
+</div>
 
 
 <div class="limiter">
