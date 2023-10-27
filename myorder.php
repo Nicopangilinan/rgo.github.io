@@ -26,6 +26,7 @@
 
 <link rel="stylesheet" type="text/css" href="assets/css/util.css">
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <meta name="robots" content="noindex, follow">
 
@@ -150,108 +151,100 @@
 </div>
 
 
-<div class="limiter">
-<div class="container-table100">
-<div class="wrap-table100">
-<div class="table100">
-<table>
-<thead>
-<tr class="table100-head">
-<th class="column1">Date</th>
-<th class="column2">Order ID</th>
-<th class="column3">Name</th>
-<th class="column4">Price</th>
-<th class="column5">Quantity</th>
-<th class="column6">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="column1">2017-09-29 01:22</td>
-<td class="column2">200398</td>
-<td class="column3">iPhone X 64Gb Grey</td>
-<td class="column4">$999.00</td>
-<td class="column5">1</td>
-<td class="column6">$999.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-28 05:57</td>
-<td class="column2">200397</td>
-<td class="column3">Samsung S8 Black</td>
-<td class="column4">$756.00</td>
-<td class="column5">1</td>
-<td class="column6">$756.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-26 05:57</td>
-<td class="column2">200396</td>
-<td class="column3">Game Console Controller</td>
-<td class="column4">$22.00</td>
-<td class="column5">2</td>
-<td class="column6">$44.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-25 23:06</td>
-<td class="column2">200392</td>
-<td class="column3">USB 3.0 Cable</td>
-<td class="column4">$10.00</td>
-<td class="column5">3</td>
-<td class="column6">$30.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-24 05:57</td>
-<td class="column2">200391</td>
-<td class="column3">Smartwatch 4.0 LTE Wifi</td>
-<td class="column4">$199.00</td>
-<td class="column5">6</td>
-<td class="column6">$1494.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-23 05:57</td>
-<td class="column2">200390</td>
-<td class="column3">Camera C430W 4k</td>
-<td class="column4">$699.00</td>
-<td class="column5">1</td>
-<td class="column6">$699.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-22 05:57</td>
-<td class="column2">200389</td>
-<td class="column3">Macbook Pro Retina 2017</td>
-<td class="column4">$2199.00</td>
-<td class="column5">1</td>
-<td class="column6">$2199.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-21 05:57</td>
-<td class="column2">200388</td>
-<td class="column3">Game Console Controller</td>
-<td class="column4">$999.00</td>
-<td class="column5">1</td>
-<td class="column6">$999.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-19 05:57</td>
-<td class="column2">200387</td>
-<td class="column3">iPhone X 64Gb Grey</td>
-<td class="column4">$999.00</td>
-<td class="column5">1</td>
-<td class="column6">$999.00</td>
-</tr>
-<tr>
-<td class="column1">2017-09-18 05:57</td>
-<td class="column2">200386</td>
-<td class="column3">iPhone X 64Gb Grey</td>
-<td class="column4">$999.00</td>
-<td class="column5">1</td>
-<td class="column6">$999.00</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
+<style>
+    .table100 {
+      width: 100%;
+    }
+    
+    .table100 th, .table100 td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .table100 th.column6, .table100 td.column6 {
+      position: relative;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .action-button {
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    /* Add your icon styles here (font icons or image icons) */
+
+    .action-button.magnifying-glass::before {
+      content: "View";
+    }
+
+    .action-button.upload::before {
+      content: "Order Details";
+    }
+
+    .action-button.close::before {
+      content: "Cancel Orders";
+    }
+
+    /* Tooltip styles */
+    
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .action-button:hover + .tooltip {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="limiter">
+    <div class="container-table100">
+      <div class="wrap-table100">
+        <div class="table100">
+          <table>
+            <thead>
+              <tr class="table100-head">
+                <th class="column1">Date</th>
+                <th class="column2">Order ID</th>
+                <th class="column3">Event Name</th>
+                <th class="column4">Person Responsible</th>
+                <th class="column5">Status</th>
+                <th class="column6">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="column1">2017-09-29 01:22</td>
+                <td class="column2">200398</td>
+                <td class="column3">INTESS</td>
+                <td class="column4">Trisha Sarmiento</td>
+                <td class="column5">Pending Documents</td>
+                <td class="column6 action-cell">
+                  <button class="action-button" onclick="handleMagnifyingGlassClick()"><i class="ri-search-line"></i></button>
+                  <button class="action-button" onclick="handleUploadClick()"><i class="ri-file-upload-line"></i></button>
+                  <button class="action-button" onclick="handleXClick()">&#10006</button>
+                  <div class="tooltip"><i class="ri-close-circle-line"></i></div>
+                </td>
+              </tr>
+              <!-- Add more rows here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 
@@ -271,6 +264,23 @@
 	  gtag('config', 'UA-23581568-13');
 	</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"816a35a4d8aa6017","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
+<script>
+    // JavaScript functions to handle button clicks
+    function handleMagnifyingGlassClick() {
+      // Handle Magnifying Glass button click
+      // Add your code here
+    }
+
+    function handleUploadClick() {
+      // Handle Upload button click
+      // Add your code here
+    }
+
+    function handleXClick() {
+      // Handle X button click
+      // Add your code here
+    }
+  </script>
 </body>
 </html>
 
