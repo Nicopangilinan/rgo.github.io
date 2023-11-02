@@ -380,7 +380,7 @@
 
 		if ($("#device-sales").length) {
 			var deviceSalesData = {
-				labels: ["Iphone", "Google", "Sumsung", "Huawei", "Xiaomi", "Oppo", "Vivo", "Lg"],
+				labels: ["Package 1", "Package 2", "Package 3", "Package 4", "Package 5", "Package 6", "Package 7", "Package 8"],
 				datasets: [{
 						label: 'Demand',
 						data: [450, 500, 300, 350, 200, 320, 310, 700],
