@@ -219,9 +219,10 @@
                 <th class="column1">Date</th>
                 <th class="column2">Order ID</th>
                 <th class="column3">Event Name</th>
-                <th class="column4">Person Responsible</th>
-                <th class="column5">Status</th>
-                <th class="column6">Action</th>
+                <th class="column4">Office / Department / Org</th>
+                <th class="column5">Person Responsible</th>
+                <th class="column6">Status</th>
+                <th class="column7">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -229,9 +230,10 @@
                 <td class="column1">2017-09-29 01:22</td>
                 <td class="column2">200398</td>
                 <td class="column3">INTESS</td>
-                <td class="column4">Trisha Sarmiento</td>
-                <td class="column5">Pending Documents</td>
-                <td class="column6 action-cell">
+                <td class="column4">CICS</td>
+                <td class="column5">Trisha Sarmiento</td>
+                <td class="column6">Pending Documents</td>
+                <td class="column7 action-cell">
                   <button class="action-button" onclick="handleMagnifyingGlassClick()"><i class="ri-search-line"></i></button>
                   <button class="action-button" onclick="handleUploadClick()"><i class="ri-file-upload-line"></i></button>
                   <button class="action-button" onclick="handleXClick()">&#10006</button>
