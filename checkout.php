@@ -106,6 +106,10 @@ $allItems = implode(', ', $items);
 
 
 <div class="container4">
+<div class="jumbotron p-3 mb-2 text-center">
+          <h6 class="lead"><b>Product(s) : </b><?= $allItems; ?></h6>
+          <h5><b>Total Amount Payable : </b> Php <?= number_format($grand_total,2) ?></h5>
+        </div>
   <form>
     <div class="form-row">
       <div class="form-group col-md-6">
