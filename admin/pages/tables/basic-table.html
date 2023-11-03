@@ -21,11 +21,11 @@
   </head>
   <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_navbar.html -->
+      <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/rgow.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo"  href="../../index.html"><img src="../../assets/images/rgow.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/rgow2.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -33,74 +33,18 @@
           </button>
           <div class="search-field d-none d-xl-block">
             <form class="d-flex align-items-center h-100" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend bg-transparent">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search products">
-              </div>
+              
             </form>
           </div>
           <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item  dropdown d-none d-md-block">
-              <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-pdf mr-2"></i>PDF </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-excel mr-2"></i>Excel </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-file-word mr-2"></i>doc </a>
-              </div>
-            </li>
-            <li class="nav-item  dropdown d-none d-md-block">
-              <a class="nav-link dropdown-toggle" id="projectDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Projects </a>
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="projectDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-eye-outline mr-2"></i>View Project </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-pencil-outline mr-2"></i>Edit Project </a>
-              </div>
-            </li>
-            <li class="nav-item nav-language dropdown d-none d-md-block">
-              <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <div class="nav-language-icon">
-                  <i class="flag-icon flag-icon-us" title="us" id="us"></i>
-                </div>
-                <div class="nav-language-text">
-                  <p class="mb-1 text-black">English</p>
-                </div>
-              </a>
-              <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                <a class="dropdown-item" href="#">
-                  <div class="nav-language-icon mr-2">
-                    <i class="flag-icon flag-icon-ae" title="ae" id="ae"></i>
-                  </div>
-                  <div class="nav-language-text">
-                    <p class="mb-1 text-black">Arabic</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <div class="nav-language-icon mr-2">
-                    <i class="flag-icon flag-icon-gb" title="GB" id="gb"></i>
-                  </div>
-                  <div class="nav-language-text">
-                    <p class="mb-1 text-black">English</p>
-                  </div>
-                </a>
-              </div>
-            </li>
+            
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="../../assets/images/faces/face28.png" alt="image">
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Henry Klein</p>
+                  <p class="mb-1 text-black">RGO Admin</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
@@ -236,7 +180,7 @@
       </nav>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_sidebar.html -->
+        <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-category">Admin Dashboard</li>
@@ -246,18 +190,32 @@
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" href="../../pages/charts/chartjs.html">
-                <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
+                <span class="icon-bg"><i class="mdi mdi-bulletin-board menu-icon"></i></span>
                 <span class="menu-title">Transactions</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../../pages/tables/basic-table.html">
-                <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
+                <span class="icon-bg"><i class="mdi mdi-food menu-icon"></i></span>
                 <span class="menu-title">Food Packages</span>
               </a>
+              <li class="nav-item sidebar-user-actions">
+                <div class="user-details">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="d-flex align-items-center">
+                        
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </li>
             </li>
+            <li class="nav-item nav-category">Settings</li>
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
