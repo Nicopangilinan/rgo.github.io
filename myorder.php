@@ -39,6 +39,13 @@
           background-attachment: fixed;
           align-items: center;
 }
+    .column7 {
+      width: 150px; /* Adjust the width as needed */
+}
+    
+    .action-cell .action-button {
+  margin-bottom: 10px; /* Adjust the spacing as needed */
+}
 </style>
 
 <script nonce="68fe1ece-0441-478a-a67f-ba0bdae9ea39">
@@ -234,9 +241,10 @@
                 <td class="column5">Trisha Sarmiento</td>
                 <td class="column6">Pending Documents</td>
                 <td class="column7 action-cell">
-                  <button class="action-button" onclick="handleMagnifyingGlassClick()"><i class="ri-search-line"></i></button>
-                  <button class="action-button" onclick="handleUploadClick()"><i class="ri-file-upload-line"></i></button>
-                  <button class="action-button" onclick="handleXClick()">&#10006</button>
+                  <button class="action-button" onclick="handleMagnifyingGlassClick()"><i class="ri-search-line">View Details</i></button>
+                  <button class="action-button" onclick="handleUploadClick()"><i class="ri-file-upload-line">Upload</i></button>
+                  <button class="action-button" onclick="handleViewClick()">&#128065 View Receipt</button>
+                  <button class="action-button" onclick="handleXClick()">&#10006 Delete</button>
                   <div class="tooltip"><i class="ri-close-circle-line"></i></div>
                 </td>
               </tr>
@@ -279,8 +287,17 @@
     }
 
     function handleXClick() {
-      // Handle X button click
-      // Add your code here
+    // Handle X button click
+    const isConfirmed = confirm('Are you sure you want to delete record?');
+
+    if (isConfirmed) {
+      // The user confirmed the deletion, you can perform the deletion action here.
+      // Add your code for deleting the item.
+      // For example, you can use AJAX to send a request to the server to delete the item.
+    } else {
+      // The user canceled the deletion.
+      // You can add code here to handle the cancellation.
+    }
     }
   </script>
 </body>
