@@ -239,7 +239,7 @@ $allItems = implode(', ', $items);
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Office/Department/Organization:</label>
       <input type="text" class="form-control" id="inputPosition"style="height:200px;">
       </div>
-      <label for="participantsTable" class="col-md-12" style="color: red;"><i>NOTE: Changes cannot be made once you have submitted, make sure that you have checked the form thoroughly and have the right details.</i></label>
+      <label for="participantsTable" class="col-md-12" style="color: red;"><i>NOTE: Changes cannot be made once you have submitted, make sure that you have checked the form thoroughly and have the correct details.</i></label>
       <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
