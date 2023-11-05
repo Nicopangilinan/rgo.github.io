@@ -80,56 +80,50 @@
 	  $stmt->execute();
 	}
 
-	// Checkout and save customer info in the orders table
+
+		// Check if the form was submitted
 	if (isset($_POST['action']) && $_POST['action'] == 'order') {
-		session_start();
-	
-		if (!$conn) {
-			die("Database connection failed: " . mysqli_connect_error());
-		}
-	
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$phone = $_POST['phone'];
-		$products = $_POST['products'];
-		$grand_total = $_POST['grand_total'];
-		$address = $_POST['address'];
-		$pmode = $_POST['pmode'];
-		$reference_number = $_POST['reference_number'];
-		$receipt_image = '';
-	
-		// Set the location to 'IN PREPARATION'
-		$location = 'IN PREPARATION';
-	
-		// Set the status to 'PENDING'
-		$status = 'PENDING';
-	
-		// Check if Gcash Payment is selected
-		if ($pmode === 'netbanking') {
-			if ($_FILES['image']['error'] === 0) {
-				$upload_dir = 'D:/XAMPP/htdocs/Boat Builders-main/image/receipt_image/';
-				$image_name = $_FILES['image']['name'];
-				$image_path = $upload_dir . $image_name;
-	
-				// Move the uploaded image to the server
-				if (move_uploaded_file($_FILES['image']['tmp_name'], $image_path)) {
-					$receipt_image = 'image/receipt_image/' . $image_name; // Set the image name in the database
-				} else {
-					echo "Error moving uploaded image.";
-					exit();
-				}
-			}
-	
-			$reference = $reference_number; // Set the reference value in the database
-		}
-	
-		// Get the user_id from the session
-		$user_id = $_SESSION['user_id'];
-		$data = '';
+    // Get values from the form
+
+    $user_id = 1; // You need to set the user_id based on your authentication logic
+    $OrderNumber = $_POST['inputOrder'];
+    $DateRequested = $_POST['inputDate'];
+    $Org = $_POST['inlineFormCustomSelectPref']; // The name attribute of the select element should match
+    $ResponsiblePerson = $_POST['inputPerson'];
+    $NameofEvent = $_POST['inputEvent'];
+    $DateofEvent = $_POST['inputEdate'];
+    $PlaceofEvent = $_POST['inputPlace'];
+    $NumberofPax = $_POST['inputPax'];
+	$Type = $_POST['gridRadios'];	
+
+    // Capture values from the delivery table
+    $DeliveryType1 = $_POST['deliveryType'][0];
+    $DeliveryTime1 = $_POST['deliveryTime'][0];
+    $AllottedBudget1 = $_POST['allottedBudget'][0];
+
+    $DeliveryType2 = $_POST['deliveryType'][1];
+    $DeliveryTime2 = $_POST['deliveryTime'][1];
+    $AllottedBudget2 = $_POST['allottedBudget'][1];
+
+    $DeliveryType3 = $_POST['deliveryType'][2];
+    $DeliveryTime3 = $_POST['deliveryTime'][2];
+    $AllottedBudget3 = $_POST['allottedBudget'][2];
+
+    // Capture values from the "Participants Information" section
+    $Pname = $_POST['inputName'];
+    $Pposition = $_POST['inputPosition'];
+    $Pallergies = $_POST['inputAllergies']; // Update to match your form field name
+    $Pinstructions = $_POST['inputInstructions'];
+    $Ppackaging = $_POST['inputPackaging'];
+
+    $products = $_POST['products'];
+    $amount_paid = $_POST['grand_total'];
+    $status = 'PENDING'; // You can set the initial status as per your requirements
 	
 		// Prepare and execute the SQL INSERT statement
-		$stmt = $conn->prepare('INSERT INTO orders (user_id, name, email, phone, address, pmode, products, amount_paid, status, location, reference, receipt_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-		$stmt->bind_param('ssssssssssss', $user_id, $name, $email, $phone, $address, $pmode, $products, $grand_total, $status, $location, $reference_number, $receipt_image);
+		$stmt = $conn->prepare('INSERT INTO orders (user_id, OrderNumber, DateRequested, Org, ResponsiblePerson, NameofEvent, DateofEvent, PlaceofEvent, NumberofPax, Type, DeliveryTime1, AllottedBudget1, DeliveryTime2, AllottedBudget2, DeliveryTime3, AllottedBudget3, Pname, Pposition, Pallergies, Pinstructions, Ppackaging, products, amount_paid,  status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+		$stmt->bind_param('sssssssssssssssssssssssss', $user_id, $OrderNumber, $DateRequested, $Org, $ResponsiblePerson, $NameofEvent, $DateofEvent, $PlaceofEvent, $NumberofPax, $Type, $DeliveryTime1, $AllottedBudget1, $DeliveryTime2, $AllottedBudget2, $DeliveryTime3, $AllottedBudget3, $Pname, $Pposition, $Pallergies, $Pinstructions, $Ppackaging, $products, $amount_paid, $status);
+
 	
 		if ($stmt->execute()) {
 			// Successfully inserted into the database
@@ -181,4 +175,5 @@
 		// Close the database connection
 		$conn->close();
 	}
+
 	?>
