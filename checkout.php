@@ -84,7 +84,7 @@ $allItems = implode(', ', $items);
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
           <ul class="dropdown-menu">
           <li><a href="myorder.php">My Orders</a></li>
-       <li><a href="#">Logout</a></li>
+       <li><a href="#" id="logout-link">Logout</a></li>
  </ul>
 </li>
     </div>
@@ -274,7 +274,8 @@ $allItems = implode(', ', $items);
         <input type="text" class="form-control" id="inputPackaging" name="inputPackaging" placeholder="Preferred Packaging">
       </div>
 </div>
-<label for="participantsTable" class="col-md-12" style="color:red;">Reminder: Rice 1 cup per serving</label>
+<label for="participantsTable" class="col-md-12" style="color:red;">Reminder: Rice 1 cup per serving</label> <br>
+<label for="participantsTable" class="col-md-12" style="color: red;"><i>NOTE: Changes cannot be made once you have submitted, make sure that you have checked the form thoroughly and have the correct details.</i></label>
 
         <div class="form-check">
             <button type="submit" name="action" value="order" class="btn btn-primary" style="width: 100%;">Submit</button>
@@ -361,6 +362,14 @@ addRowButton.addEventListener("click", function () {
             }
         });
     </script>
+    <script>
+  document.getElementById('logout-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = 'logout.php'; // Redirect to logout script
+    }
+  });
+</script>
 </body>
 
 </html>

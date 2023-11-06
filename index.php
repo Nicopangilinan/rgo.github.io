@@ -1,55 +1,45 @@
 <?php
-session_start();
+// Database connection details
 $databaseHost = 'localhost';
 $databaseUsername = 'root';
 $databasePassword = '';
 $dbname = "rgo_db";
 
-// Create a connection
+// Create a connection to the database
 $conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $dbname);
 
 // Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    // Validate and sanitize user inputs (you can add more validation)
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $password = filter_var($password, FILTER_SANITIZE_STRING);
-
-    // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ? AND password = ?");
-    if ($stmt) {
-        $stmt->bind_param("ss", $email, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if (!$result) {
-            die("Query failed: " . $conn->error);
-        }
-
+    // Check if the username and password match a record in the database
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["email"];
+        $password = $_POST["password"];
+    
+        // You should perform proper validation and sanitization here
+    
+        $sql = "SELECT user_id FROM users WHERE username = '$username' AND password = '$password'";
+        $result = $conn->query($sql);
+        
         if ($result->num_rows == 1) {
-            // Successful login, retrieve the user ID
-            $row = $result->fetch_assoc();
-            $userID = $row["user_id"];
-
-            // Set the user ID in a session variable
-            $_SESSION['user_id'] = $userID;
-            // Successful login, redirect to a dashboard page
-            header("Location: homepage.php");
-            exit();
-        } else {
-            echo "Invalid email or password.";
-        }
+        // Successful login, redirect to a dashboard page
+        $row = $result->fetch_assoc();
+        // Successful login, redirect to a dashboard page
+        session_start();
+        $_SESSION['user_id'] = $row['user_id'];
+        // Use JavaScript to display an alert and then redirect
+        echo '<script>window.location.href = "homepage.php";';
+        echo 'alert("Login successful. Click OK to proceed to home page.");</script>';
+        exit();
     } else {
-        die("Prepare failed: " . $conn->error);
+        echo '<script type="text/javascript">';
+        echo 'alert("Invalid username or Password");';
+        echo '</script>';
     }
-}
+    }
 
+// Close the database connection
 $conn->close();
 ?>
 
@@ -75,8 +65,8 @@ $conn->close();
             <div>
                 <div class="login__inputs">
                     <div>
-                        <label for="" class="login__label">Email</label>
-                        <input type="email" placeholder="Enter your email address" required class="login__input" name="email" id="email">
+                        <label for="" class="login__label">Username</label>
+                        <input type="text" placeholder="Enter your email address" required class="login__input" name="email" id="email">
                     </div>
 
                     <div>
@@ -99,8 +89,6 @@ $conn->close();
                 <div class="login__buttons">
                     <button type="submit" class="login__button">Log In</button>
                 </div>
-
-                <a href="#" class="login__forgot">Forgot Password?</a>
             </div>
         </form>
     </div>

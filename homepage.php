@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="script.js"></script>
+    
+    
     <style>
+       /* Style for the dropdown menu */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 150px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-menu li {
+    padding: 10px;
+  }
+
+  .dropdown-menu a {
+    color: #000; /* Set text color to black */
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
         body {
           background: url("CEAFA-3D.jpg") no-repeat;
           height: 100vh;
@@ -30,8 +75,14 @@
                 </div>
                 <li><a href="cart.php"><i class="fas fa-shopping-bag"></i> <span id="cart-item" class="badge badge-danger"></span></a></li>
                 <a style= "color: white">GCH, Alangilan, Batangas City</a>
-                <li><a href="#"><i class="fas fa-user"></i></a></li>
-            </ul>
+                <li class="dropdown">
+        <a href="#" class="dropdown-toggle"><i class="fas fa-user"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="myorder.php">My Orders</a></li>
+          <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+      </li>
+
             <div class="icon menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -101,6 +152,14 @@
     window.onscroll = ()=>{
       this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
     }
+</script>
+<script>
+  document.getElementById('logout-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = 'logout.php'; // Redirect to logout script
+    }
+  });
 </script>
 </body>
 </html>

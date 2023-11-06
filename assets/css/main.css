@@ -154,7 +154,7 @@ table td.r,table th.r {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f5f5f5
+    background-color: #fde2e2
 }
 
 tbody tr {
@@ -195,7 +195,7 @@ tbody tr:hover {
 }
 
 .column6 {
-    width: 222px;
+    width: 269px;
     text-align: right;
     padding-right: 62px
 }
@@ -248,26 +248,29 @@ tbody tr:hover {
     }
 
     table tbody tr td:nth-child(3):before {
-        content: "Name"
+        content: "Event Name"
     }
 
     table tbody tr td:nth-child(4):before {
-        content: "Price"
+        content: "Office/Department/Org"
     }
 
     table tbody tr td:nth-child(5):before {
-        content: "Quantity"
+        content: "Person Responsible"
     }
 
     table tbody tr td:nth-child(6):before {
-        content: "Total"
+        content: "Status"
+    }
+    table tbody tr td:nth-child(7):before {
+        content: "Actions"
     }
 
     .column4,.column5,.column6 {
         text-align: left
     }
 
-    .column4,.column5,.column6,.column1,.column2,.column3 {
+    .column4,.column5,.column6,.column1,.column2,.column3,.column7 {
         width: 100%
     }
 

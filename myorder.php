@@ -1,5 +1,32 @@
 <?php
-  session_start();
+// Database connection details
+$databaseHost = 'localhost';
+$databaseUsername = 'root';
+$databasePassword = '';
+$dbname = "rgo_db";
+
+// Create a connection to the database
+$conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve orders for the logged-in user
+session_start();
+$user_id = $_SESSION['user_id'];
+
+if (empty($user_id)) {
+    // Handle the case where user_id is empty
+    echo "User ID is empty. Check your login process.";
+} else {
+
+    $sql = "SELECT * FROM orders WHERE user_id = '$user_id'";
+
+    $result = $conn->query($sql);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +42,17 @@
   <link rel="stylesheet" href="shop.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
 
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-
-<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-
-<link rel="stylesheet" type="text/css" href="assets/css/util.css">
-<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
 <meta name="robots" content="noindex, follow">
 
@@ -45,6 +71,53 @@
     
     .action-cell .action-button {
   margin-bottom: 10px; /* Adjust the spacing as needed */
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 150px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-menu li {
+    padding: 10px;
+  }
+
+  .dropdown-menu a {
+    color: #000; /* Set text color to black */
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+        body {
+          background: url("CEAFA-3D.jpg") no-repeat;
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+          align-items: center;
 }
 </style>
 
@@ -134,8 +207,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i></a>
           <ul class="dropdown-menu">
-          <li><a href="#">My Orders</a></li>
-       <li><a href="#">Logout</a></li>
+       <li><a href="#" id="logout-link">Logout</a></li>
  </ul>
 </li>
     </div>
@@ -162,6 +234,9 @@
     .table100 {
       width: 100%;
     }
+    .table100 th{
+      color: white;
+    }
     
     .table100 th, .table100 td {
       padding: 10px;
@@ -181,38 +256,6 @@
       cursor: pointer;
       margin-right: 5px;
     }
-
-    /* Add your icon styles here (font icons or image icons) */
-
-    .action-button.magnifying-glass::before {
-      content: "View";
-    }
-
-    .action-button.upload::before {
-      content: "Order Details";
-    }
-
-    .action-button.close::before {
-      content: "Cancel Orders";
-    }
-
-    /* Tooltip styles */
-    
-    .tooltip {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #333;
-      color: #fff;
-      padding: 5px;
-      border-radius: 5px;
-      display: none;
-    }
-
-    .action-button:hover + .tooltip {
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -220,52 +263,90 @@
     <div class="container-table100">
       <div class="wrap-table100">
         <div class="table100">
-          <table>
+        <?php if ($result->num_rows > 0) : ?>
+    <div class="table-container">
+        <table class="content-table">
             <thead>
-              <tr class="table100-head">
-                <th class="column1">Date</th>
-                <th class="column2">Order ID</th>
-                <th class="column3">Event Name</th>
-                <th class="column4">Office / Department / Org</th>
-                <th class="column5">Person Responsible</th>
-                <th class="column6">Status</th>
-                <th class="column7">Action</th>
-              </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Order ID</th>
+                    <th>Event Name</th>
+                    <th style="width: 15%;">Office/Department/Org</th>
+                    <th>Person Responsible</th>
+                    <th>Status</th>
+                    <th>Remarks</th>
+                    <th style="width: 15%;">Actions</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="column1">2017-09-29 01:22</td>
-                <td class="column2">200398</td>
-                <td class="column3">INTESS</td>
-                <td class="column4">CICS</td>
-                <td class="column5">Trisha Sarmiento</td>
-                <td class="column6">Pending Documents</td>
-                <td class="column7 action-cell">
-                  <button class="action-button" onclick="handleMagnifyingGlassClick()"><i class="ri-search-line">View Details</i></button>
-                  <button class="action-button" onclick="handleUploadClick()"><i class="ri-file-upload-line">Upload</i></button>
-                  <button class="action-button" onclick="handleViewClick()">&#128065 View Receipt</button>
-                  <button class="action-button" onclick="handleXClick()">&#10006 Delete</button>
-                  <div class="tooltip"><i class="ri-close-circle-line"></i></div>
+                <?php while ($row = $result->fetch_assoc()) : ?>
+                    <tr> 
+                        <td><?= $row['DateRequested'] ?></td>
+                        <td><?= $row['id'] ?></td>
+                        <td><?= $row['NameofEvent'] ?></td>
+                        <td style="width: 15%;"><?= $row['Org'] ?></td>
+                        <td><?= $row['ResponsiblePerson'] ?></td>
+
+                        <td><?= $row['status'] ?></td>
+                        <td><?= $row['Remarks'] ?></td>
+                        <td style="width: 15%;" class="column7 action-cell">
+                        <button style="width: 150px; text-align: left; margin:2px;" style="text" type="button" class="btn btn-outline-primary btn-icon-text">
+                        <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details </button>
+
+                        <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
+                        <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
+
+                        <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
+                        <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt </button>
+
+                        <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
+                        <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
                 </td>
-              </tr>
-              <!-- Add more rows here -->
+                    </tr>
+                <?php endwhile; ?>
             </tbody>
-          </table>
+        </table>
+    <?php else : ?>
+        <p>No orders found.</p>
+    <?php endif; ?>
+    </div>
         </div>
       </div>
     </div>
   </div>
 
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="vendor/select2/select2.min.js"></script>
-
 <script src="js/main.js"></script>
-
+<script src="admin/assets/js/off-canvas.js"></script>
+<script src="admin/assets/js/hoverable-collapse.js"></script>
+<script src="admin/assets/js/misc.js"></script>
+<script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+// JavaScript function to trigger the confirmation dialog
+function confirmDelete(orderId) {
+    if (confirm("Are you sure you want to delete this order?")) {
+        // If the user confirms, submit the form to delete the row
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = 'delete.php';
+        
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'order_id';
+        input.value = orderId;
+        
+        form.appendChild(input);
+        document.body.appendChild(form);
+        
+        form.submit();
+    }
+}
+</script>
+
 <script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
@@ -300,6 +381,14 @@
     }
     }
   </script>
+  <script>
+  document.getElementById('logout-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (confirm('Are you sure you want to logout?')) {
+      window.location.href = 'logout.php'; // Redirect to logout script
+    }
+  });
+</script>
 </body>
 </html>
 
