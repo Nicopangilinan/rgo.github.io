@@ -273,8 +273,6 @@ $allItems = implode(', ', $items);
         <label for="inputPackaging">Preferred Packaging:</label>
         <input type="text" class="form-control" id="inputPackaging" name="inputPackaging" placeholder="Preferred Packaging">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
 </div>
 <label for="participantsTable" class="col-md-12" style="color:red;">Reminder: Rice 1 cup per serving</label>
 
