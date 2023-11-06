@@ -239,7 +239,7 @@ if (empty($user_id)) {
     }
     
     .table100 th, .table100 td {
-      padding: 10px;
+      padding: 5px;
       text-align: left;
     }
 
@@ -290,8 +290,11 @@ if (empty($user_id)) {
                         <td><?= $row['status'] ?></td>
                         <td><?= $row['Remarks'] ?></td>
                         <td style="width: 15%;" class="column7 action-cell">
-                        <button style="width: 150px; text-align: left; margin:2px;" style="text" type="button" class="btn btn-outline-primary btn-icon-text">
-                        <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details </button>
+                      <button style="width: 150px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
+                          onclick="showRowDetails(<?= $row['id'] ?>)">
+                          <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details
+                      </button>
+
 
                         <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
                         <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
@@ -300,6 +303,7 @@ if (empty($user_id)) {
                           <a href="generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
                               <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
                           </a>
+                          
                       </button>
                         <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
                         <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
@@ -312,6 +316,17 @@ if (empty($user_id)) {
         <p>No orders found.</p>
     <?php endif; ?>
     </div>
+    <!-- Modal for displaying row details -->
+<div id="rowDetailsModal" class="modal" style="overflow:auto;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Order Details</h2>
+        <div id="rowDetailsContent">
+            <!-- Content will be loaded here via JavaScript -->
+        </div>
+    </div>
+</div>
+
         </div>
       </div>
     </div>
@@ -327,6 +342,69 @@ if (empty($user_id)) {
 <script src="admin/assets/js/misc.js"></script>
 <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+function showRowDetails(rowId) {
+    // Make an AJAX request to fetch data from the database
+    $.ajax({
+        url: 'api.php?action=fetchOrderData', // Replace with the actual URL to your PHP script
+        method: 'GET',
+        data: { rowId: rowId }, // Pass any necessary data to identify the specific row
+
+        success: function (data) {
+            // Assuming 'data' contains the fetched database row
+
+            // Populate the modal with the fetched data
+            document.getElementById("rowDetailsContent").innerHTML = `
+            <h2>Event Details</h2>
+    <p><strong>Date Requested:</strong> ${data.DateRequested}</p>
+    <p><strong>Event Name:</strong> ${data.NameofEvent}</p>
+    <p><strong>Office/Department/Org:</strong> ${data.Org}</p>
+    <p><strong>Person Responsible:</strong> ${data.ResponsiblePerson}</p>
+    <p><strong>Status:</strong> ${data.status}</p>
+    <p><strong>Event Date:</strong> ${data.DateofEvent}</p>
+    <p><strong>Event Place:</strong> ${data.PlaceofEvent}</p>
+    <p><strong>Number of Pax:</strong> ${data.NumberofPax}</p>
+    <p><strong>Service Type:</strong> ${data.Type}</p>
+
+    <h3>Delivery Information</h3>
+    <p><strong>Delivery Type:</strong> ${data.DeliveryType1}</p>
+    <p><strong>Delivery Time:</strong> ${data.DeliveryTime1}</p>
+    <p><strong>Allotted Budget:</strong> ${data.AllottedBudget1}</p>
+    
+    <h3>Additional Delivery</h3>
+    <p><strong>Delivery Type:</strong> ${data.DeliveryType2}</p>
+    <p><strong>Delivery Time:</strong> ${data.DeliveryTime2}</p>
+    <p><strong>Allotted Budget:</strong> ${data.AllottedBudget2}</p>
+
+    <!-- Include data for Delivery Type 3, if needed -->
+
+    <h3>Participants' Information</h3>
+    <p><strong>Participant's Name:</strong> ${data.Pname}</p>
+    <p><strong>Participant's Position:</strong> ${data.Pposition}</p>
+    <p><strong>Participant's Allergies:</strong> ${data.Pallergies}</p>
+    <p><strong>Special Instructions:</strong> ${data.Pinstructions}</p>
+    <p><strong>Preferred Packaging:</strong> ${data.Ppackaging}</p>
+
+    <h3>Food Information</h3>
+    <p><strong>Packages Ordered:</strong> ${data.products}</p>
+    <p><strong>Total Expenses:</strong> ${data.grand_total}</p>
+            `;
+        },
+        error: function (error) {
+            console.log("Error fetching data from the database: " + error);
+        }
+    });
+
+    // Show the modal
+    const modal = document.getElementById("rowDetailsModal");
+    modal.style.display = "block";
+}
+    // Function to close the modal
+    function closeModal() {
+        const modal = document.getElementById("rowDetailsModal");
+        modal.style.display = "none";
+    }
+</script>
 <script>
 // JavaScript function to trigger the confirmation dialog
 function confirmDelete(orderId) {
