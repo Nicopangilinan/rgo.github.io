@@ -297,8 +297,10 @@ if (empty($user_id)) {
                         <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
 
                         <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
-                        <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt </button>
-
+                          <a href="generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
+                              <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
+                          </a>
+                      </button>
                         <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
                         <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
                 </td>

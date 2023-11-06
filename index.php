@@ -33,11 +33,27 @@ if ($conn->connect_error) {
         echo 'alert("Login successful. Click OK to proceed to home page.");</script>';
         exit();
     } else {
-        echo '<script type="text/javascript">';
-        echo 'alert("Invalid username or Password");';
-        echo '</script>';
+        $sql = "SELECT user_id FROM admin WHERE username = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        // Successful login, redirect to a dashboard page
+        session_start();
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['user_id'];
+
+        // Use JavaScript to display an alert and then redirect
+        echo '<script>alert("Admin Login successful. Click OK to proceed to the home page.");
+              window.location.href = "admin/index.html";</script>';
+        exit();
+    } else {
+        echo '<script>alert("Invalid email or password.");</script>';
     }
-    }
+}
+}
 
 // Close the database connection
 $conn->close();

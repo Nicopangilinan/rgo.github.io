@@ -22,7 +22,7 @@ session_start();
 
   .dropdown-toggle {
     text-decoration: none;
-    color: #ffffff;
+    color: #000;
     padding: 10px;
     display: block;
     cursor: pointer;
@@ -32,7 +32,7 @@ session_start();
     display: none;
     position: absolute;
     width: 150px;
-    background-color: #ffffff;
+    background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
