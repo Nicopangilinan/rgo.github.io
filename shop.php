@@ -76,16 +76,6 @@
         <input type="checkbox" id="filter-snacks">
         <label for="filter-size-large">Snacks</label>
       </div>
-
-      <div>
-        <input type="checkbox" id="filter-beverages">
-        <label for="filter-size-large">Beverages</label>
-      </div>
-
-      <div>
-        <input type="checkbox" id="filter-addons">
-        <label for="filter-size-large">Add-ons</label>
-      </div>
     </div>
   <!--SLIDER-->
   <div class="d-flex">
