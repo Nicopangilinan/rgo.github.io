@@ -156,7 +156,7 @@
                             <div class="row">
                               <div class="col-sm-12">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                  <h4 class="card-title mb-0">Recent Activity</h4>
+                                  <h4 class="card-title mb-0">Record of Orders Collected Monthly</h4>
                                   <div class="dropdown dropdown-arrow-none">
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuIconButton1">
                                     </div>
@@ -167,14 +167,7 @@
                               <div class="col-12 grid-margin">
                                 <div class="pl-0 pl-lg-4">
                                     <div class="d-xl-flex justify-content-between align-items-center mb-2">
-                                        <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
-                                            <h3 class="text-dark font-weight-bold mr-2 mb-0">Number of Orders</h3>
-                                            <h5 class="mb-0">( monthly)</h5>
-                                        </div>
-                                        <div class="d-lg-flex">
-                                            <p class="mr-2 mb-0">Timezone:</p>
-                                            <p class="text-dark font-weight-bold mb-0">UTC/GMT +8 hours</p>
-                                        </div>
+                                        
                                     </div>
                                     <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
                                     <canvas id="dmonth" style="width: 100%; height: 300px;"></canvas>

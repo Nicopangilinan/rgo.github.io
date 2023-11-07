@@ -119,6 +119,49 @@ if (empty($user_id)) {
           background-attachment: fixed;
           align-items: center;
 }
+.table-responsive-xl {
+      max-width: 100%; /* Adjust the maximum height as needed */
+      overflow-y: auto;}
+      /* Styles for the modals */
+      .modal2 {
+          display: none; /* Hidden by default */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background overlay */
+          z-index: 99;
+      }
+
+      .modal-content2 {
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          position: relative;
+          margin: 10% auto; /* Centered vertically and horizontally */
+          padding: 20px;
+          width: 70%;
+      }
+
+      /* Close button style */
+      .close {
+          color: #555;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+      .close:hover {
+          color: #000;
+      }
+
+      /* Form style */
+      .form-group {
+          margin: 10px 0;
+      }
+
 </style>
 
 <script nonce="68fe1ece-0441-478a-a67f-ba0bdae9ea39">
@@ -295,7 +338,7 @@ if (empty($user_id)) {
                       </button>
 
 
-                        <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
+                        <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text" onclick="showRowFiles(<?= $row['id'] ?>)">
                         <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
 
                         <button style="width: 150px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
@@ -315,16 +358,96 @@ if (empty($user_id)) {
         <p>No orders found.</p>
     <?php endif; ?>
     </div>
-    <!-- Modal for displaying row details -->
-<div id="rowDetailsModal" class="modal" style="overflow:auto;">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Order Details</h2>
-        <div id="rowDetailsContent">
-            <!-- Content will be loaded here via JavaScript -->
-        </div>
-    </div>
-</div>
+                <!-- Modal for displaying row details -->
+            <div id="rowDetailsModal" class="modal" style="overflow:auto;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Order Details</h2>
+                    <div id="rowDetailsContent">
+                        <!-- Content will be loaded here via JavaScript -->
+                    </div>
+                </div>
+            </div>
+                  <!-- DOCUMENT MODAL -->
+            <div id="rowFilesModal" class="modal2">
+                <div class="modal-content2">
+                <span class="close" onclick="closeModal2()">&times;</span>
+                    <a>Select Files To upload (PDF files only)</a>
+                    <div class="table-responsive-xl">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Transactions (Receivable)</th>
+                                    <th>Filename (PDF only)</th>
+                                    <th>View/Download</th>
+                                    <th>Upload</th>
+                                    <th>Delete</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                <tr id="purchaseRequestRow">
+                                    <td>1</td>
+                                    <td>Purchase Request</td>
+                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
+                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
+                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
+                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
+                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
+                                </tr>
+                                
+                                <!-- Repeat the structure for other rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
         </div>
       </div>
@@ -395,12 +518,24 @@ function showRowDetails(rowId) {
     });
 
     // Show the modal
-    const modal = document.getElementById("rowDetailsModal");
+    const modal = document.getElementById("rowDetailsModal", "rowFilesModal");
     modal.style.display = "block";
 }
     // Function to close the modal
     function closeModal() {
-        const modal = document.getElementById("rowDetailsModal");
+        const modal = document.getElementById("rowDetailsModal", "rowFilesModal");
+        modal.style.display = "none";
+    }
+</script>
+<script>
+  function showRowFiles(rowId) {
+      // Show the modal
+      const modal = document.getElementById("rowFilesModal");
+    modal.style.display = "block";
+}
+    // Function to close the modal
+    function closeModal2() {
+        const modal = document.getElementById("rowFilesModal");
         modal.style.display = "none";
     }
 </script>

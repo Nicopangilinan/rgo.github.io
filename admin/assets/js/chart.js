@@ -205,7 +205,7 @@ $(function() {
     datasets: [{
         label: 'First Dataset',
         data: [{
-            x: -10,
+            x: 15,
             y: 0
           },
           {

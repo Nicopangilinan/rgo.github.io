@@ -258,14 +258,14 @@ if (empty($user_id)) {
 
                                               <td><?= $row['product_type'] ?></td>
                                               <td  style="width: 200px;" class="column7 action-cell">
-                                            <button style="width: 125px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
+                                            <button style="width: 125px; height:50px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
                                                 onclick="showRowDetails(<?= $row['id'] ?>)">
                                                 <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details
                                             </button>
 
 
-                                            <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text" onclick="openEditModal(<?= $row['id'] ?>, '<?= $row['product_name'] ?>', <?= $row['product_price'] ?>)">
-                                                <i class="mdi mdi-upload btn-icon-prepend"></i> Edit
+                                            <button style="width: 125px; height:50px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text" onclick="openEditModal(<?= $row['id'] ?>, '<?= $row['product_name'] ?>', <?= $row['product_price'] ?>)">
+                                                <i class="mdi mdi-lead-pencil btn-icon-prepend"></i> Edit
                                             </button>
                                       </td>
                                           </tr>

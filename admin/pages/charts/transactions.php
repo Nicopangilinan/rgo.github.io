@@ -187,16 +187,16 @@ if (empty($user_id)) {
                                               <td><?= $row['Org'] ?></td>
                                               <td><?= $row['ResponsiblePerson'] ?></td>
                                               <td> <div class="dropdown">
-                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 130px;"> Select Status </button>
-                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item dropdown-item-approval" >For Approval</a>
-                                <a class="dropdown-item dropdown-item-confirmed" >Confirmed</a>
-                                <a class="dropdown-item dropdown-item-delivered" >Delivered</a>
-                                <a class="dropdown-item dropdown-item-unpaid" >Unpaid</a>
-                                <a class="dropdown-item dropdown-item-completed" >Completed</a>
-                                <a class="dropdown-item dropdown-item-canceled" >Canceled</a>
-                              </div>
-                            </div>
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 130px;"> Select Status </button>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                              <a class="dropdown-item dropdown-item-approval" >For Approval</a>
+                                              <a class="dropdown-item dropdown-item-confirmed" >Confirmed</a>
+                                              <a class="dropdown-item dropdown-item-delivered" >Delivered</a>
+                                              <a class="dropdown-item dropdown-item-unpaid" >Unpaid</a>
+                                              <a class="dropdown-item dropdown-item-completed" >Completed</a>
+                                              <a class="dropdown-item dropdown-item-canceled" >Canceled</a>
+                                            </div>
+                                          </div>
                                             </td>
                                               <td><?= $row['Remarks'] ?></td>
                                               <td  style="width: 200px;" class="column7 action-cell">
@@ -217,25 +217,46 @@ if (empty($user_id)) {
                                                   </button>
                                                     <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
                                                     <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
-                    </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>No orders found.</p>
-    <?php endif; ?>
-    </div>
-    <!-- Modal for displaying row details -->
-<div id="rowDetailsModal" class="modal" style="overflow:auto;">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Order Details</h2>
-        <div id="rowDetailsContent">
-            <!-- Content will be loaded here via JavaScript -->
-        </div>
-    </div>
-</div>
+                                            </td>
+                                            </tr>
+                                        <?php endwhile; ?>
+                                    </tbody>
+                                </table>
+                            <?php else : ?>
+                                <p>No orders found.</p>
+                            <?php endif; ?>
+                            </div>
+                            <!-- Modal for displaying row details -->
+                        <div id="rowDetailsModal" class="modal" style="overflow:auto;">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <h2>Order Details</h2>
+                                <div id="rowDetailsContent">
+                                    <!-- Content will be loaded here via JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DOCUMENT MODAL -->
+                      <div id="filesModal" class="modal">
+                        <div class="modal-content">
+                        <div class="table-responsive-xl">
+                              <table class="table">
+                                  <thead>
+                                      <tr>
+                                          <th>#</th>
+                                          <th>Transactions(Recievable)</th>
+                                          <th>Filename (PDF only)</th>
+                                          <th>View/Download</th>
+                                          <th>Upload</th>
+                                          <th>Delete</th>
+                                          <th>Status</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                            </form>
+                        </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
