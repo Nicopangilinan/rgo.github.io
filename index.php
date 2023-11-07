@@ -47,7 +47,7 @@ if ($conn->connect_error) {
 
         // Use JavaScript to display an alert and then redirect
         echo '<script>alert("Admin Login successful. Click OK to proceed to the home page.");
-              window.location.href = "admin/index.html";</script>';
+              window.location.href = "admin/admin.php";</script>';
         exit();
     } else {
         echo '<script>alert("Invalid email or password.");</script>';
