@@ -361,8 +361,8 @@ if (empty($user_id)) {
     <?php endif; ?>
     </div>
     <!-- Modal for displaying row details -->
-<div id="rowDetailsModal" class="modal" style="overflow:auto;">
-    <div class="modal-content">
+<div id="rowDetailsModal" class="modal2" style="overflow:auto;">
+    <div class="modal-content2">
         <span class="close" onclick="closeModal()">&times;</span>
         <h2>Order Details</h2>
         <div id="rowDetailsContent">
@@ -440,7 +440,7 @@ if (empty($user_id)) {
 function showRowDetails(rowId) {
     // Make an AJAX request to fetch data from the database
     $.ajax({
-        url: '../../api.php?action=fetchOrderData', // Replace with the actual URL to your PHP script
+        url: '../../../api2.php?action=fetchOrderData', // Replace with the actual URL to your PHP script
         method: 'GET',
         data: { rowId: rowId }, // Pass any necessary data to identify the specific row
 
