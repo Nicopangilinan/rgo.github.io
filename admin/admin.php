@@ -168,12 +168,12 @@
                                 <div class="pl-0 pl-lg-4">
                                     <div class="d-xl-flex justify-content-between align-items-center mb-2">
                                         <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
-                                            <h3 class="text-dark font-weight-bold mr-2 mb-0">Devices sales</h3>
-                                            <h5 class="mb-0">( growth 62% )</h5>
+                                            <h3 class="text-dark font-weight-bold mr-2 mb-0">Number of Orders</h3>
+                                            <h5 class="mb-0">( monthly)</h5>
                                         </div>
                                         <div class="d-lg-flex">
                                             <p class="mr-2 mb-0">Timezone:</p>
-                                            <p class="text-dark font-weight-bold mb-0">GMT-0400 Eastern Delight Time</p>
+                                            <p class="text-dark font-weight-bold mb-0">UTC/GMT +8 hours</p>
                                         </div>
                                     </div>
                                     <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
