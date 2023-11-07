@@ -217,19 +217,7 @@ if (empty($user_id)) {
               </li>
             </li>
             <li class="nav-item nav-category">Settings</li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
-                  <span class="menu-title">Settings</span>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
-                  <span class="menu-title">Take Tour</span></a>
-              </div>
-            </li>
+           
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
@@ -242,13 +230,7 @@ if (empty($user_id)) {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Basic Tables </h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Basic tables</li>
-                </ol>
-              </nav>
+              <h3 class="page-title"> Food Packages Tables </h3>
             </div>
             <div class="row">
             <?php if ($result->num_rows > 0) : ?>
