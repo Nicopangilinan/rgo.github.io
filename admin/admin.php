@@ -121,35 +121,33 @@
                       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                         <div class="card">
                           <div class="card-body text-center">
+                          <i class="mdi mdi-new-box icon-lg text-warning" style="font-size:80px;"></i>
                             <h5 class="mb-2 text-dark font-weight-normal">New Orders</h5>
-                            <h2 class="mb-4 text-dark font-weight-bold">--.--</h2>
-                            <p class="mt-4 mb-0">Completed</p>
-                            <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
+                            <h1 class="mb-4 text-dark font-weight-bolder"><span id="newOrdersCount">--</span></h1>
+                          <h3 class="mb-0 font-weight-bold mt-2 text-warning">__________________</h3>
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-body text-center">
-                          
-                        <i class="mdi mdi-av-timer icon-lg text-primary" ></i>
+                        <i class="mdi mdi-av-timer icon-lg text-primary" style="font-size:80px;"></i>
                           <h5 class="mb-2 text-dark font-weight-normal">Pending Orders</h5>
-                          <h1 class="mb-4 text-danger font-weight-bolder"><span id="pendingOrdersCount">--</span></h1>
-                          <p class="mt-4 mb-0">Increased since yesterday</p>
-                          <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
+                          <h1 class="mb-4 text-dark font-weight-bolder"><span id="pendingOrdersCount">--</span></h1>
+                          <h3 class="mb-0 font-weight-bold mt-2 text-primary">__________________</h3>
                         </div>
                       </div>
                     </div>
-                      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-                        <div class="card">
-                          <div class="card-body text-center">
-                            <h5 class="mb-2 text-dark font-weight-normal">Delivered Orders</h5>
-                            <h2 class="mb-4 text-dark font-weight-bold">--.--</h2>
-                            <p class="mt-4 mb-0">Increased since yesterday</p>
-                            <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
-                          </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body text-center">
+                        <i class="mdi mdi-truck-delivery icon-lg text-success" style="font-size:80px;"></i>
+                          <h5 class="mb-2 text-dark font-weight-normal">Delivered Orders</h5>
+                          <h1 class="mb-4 text-dark font-weight-bolder"><span id="deliveredOrdersCount">--</span></h1>
+                          <h3 class="mb-0 font-weight-bold mt-2 text-success">__________________</h3>
                         </div>
                       </div>
+                    </div>
                     </div>
                     <div class="row">
                       <div class="col-12 grid-margin">
@@ -167,21 +165,81 @@
                               </div>
                     
                               <div class="col-12 grid-margin">
-                                <div class="pl-0 pl-lg-4 ">
-                                  <div class="d-xl-flex justify-content-between align-items-center mb-2">
-                                    <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
-                                      <h3 class="text-dark font-weight-bold mr-2 mb-0">Devices sales</h3>
-                                      <h5 class="mb-0">( growth 62% )</h5>
+                                <div class="pl-0 pl-lg-4">
+                                    <div class="d-xl-flex justify-content-between align-items-center mb-2">
+                                        <div class="d-lg-flex align-items-center mb-lg-2 mb-xl-0">
+                                            <h3 class="text-dark font-weight-bold mr-2 mb-0">Devices sales</h3>
+                                            <h5 class="mb-0">( growth 62% )</h5>
+                                        </div>
+                                        <div class="d-lg-flex">
+                                            <p class="mr-2 mb-0">Timezone:</p>
+                                            <p class="text-dark font-weight-bold mb-0">GMT-0400 Eastern Delight Time</p>
+                                        </div>
                                     </div>
-                                    <div class="d-lg-flex">
-                                      <p class="mr-2 mb-0">Timezone:</p>
-                                      <p class="text-dark font-weight-bold mb-0">GMT-0400 Eastern Delight Time</p>
-                                    </div>
-                                  </div>
-                                  <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
-                                  <canvas id="device-sales" style="width: 100%; height: 300px;"></canvas> <!-- Added inline style for full width -->
+                                    <div class="graph-custom-legend clearfix" id="device-sales-legend"></div>
+                                    <canvas id="dmonth" style="width: 100%; height: 300px;"></canvas>
                                 </div>
-                              </div>
+                            </div>
+                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                                $(function () {
+                                    // Function to fetch data from the PHP script
+                                    function fetchDataForLineChart() {
+                                        $.ajax({
+                                            url: 'monthly_orders.php', // Replace with the actual path to your PHP script
+                                            method: 'GET',
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                console.log("Data received:", data); // Log the data to the console for inspection
+                                                // Create or update the line chart with the fetched data
+                                                createLineChart(data);
+                                            },
+                                            error: function (error) {
+                                                console.error('Error fetching data: ' + error);
+                                            }
+                                        });
+                                    }
+
+
+                                    // Function to create or update the line chart
+                                    function createLineChart(data) {    
+                                        console.log(data); // Log the data to the console to check its content
+                                        var lineChartCanvas = $("#dmonth").get(0).getContext("2d");
+                                        var lineChart = new Chart(lineChartCanvas, {
+                                            type: 'line',
+                                            data: {
+                                                labels: data.map(function (item) {
+                                                    return item.month;
+                                                }),
+                                                datasets: [
+                                                    {
+                                                        label: 'Number of Orders',
+                                                        data: data.map(function (item) {
+                                                            return item.orderCount;
+                                                        }),
+                                                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                                        borderColor: 'rgba(54, 162, 235, 1)',
+                                                        borderWidth: 1
+                                                    }
+                                                ]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    yAxes: [{
+                                                        ticks: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        });
+                                    }
+
+                                    // Call the function to fetch and display data on page load
+                                    fetchDataForLineChart();
+                                });
+                            </script>
                     
                             </div>
                           </div>
@@ -284,6 +342,128 @@
           }
         });
       });
+    </script>
+    <script>
+      $(function() {
+        var deliveredDoughnutPieData = {
+          datasets: [{
+            data: [0], // Initial count, will be updated via AJAX
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(153, 102, 255, 0.5)',
+              'rgba(255, 159, 64, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+          }],
+          labels: [
+            'Pink',
+            'Blue',
+            'Yellow',
+          ]
+        };
+
+        var deliveredDoughnutPieOptions = {
+          responsive: true,
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+        };
+
+        // Fetch the count of orders with "Delivered" status from the server
+        $.ajax({
+          url: 'get_delivered_orders.php', // Replace with the actual path to your server-side script
+          success: function(data) {
+            // Update the deliveredDoughnutPieData with the fetched count
+            deliveredDoughnutPieData.datasets[0].data = [data];
+
+            // Update the HTML element with the count
+            $('#deliveredOrdersCount').text(data);
+
+            // Create the doughnut chart
+            if ($("#deliveredDoughnutChart").length) {
+              var deliveredDoughnutChartCanvas = $("#deliveredDoughnutChart").get(0).getContext("2d");
+              var deliveredDoughnutChart = new Chart(deliveredDoughnutChartCanvas, {
+                type: 'doughnut',
+                data: deliveredDoughnutPieData,
+                options: deliveredDoughnutPieOptions
+              });
+            }
+          }
+        });
+      });
+
+    </script>
+    <script>
+      $(function() {
+        var doughnutPieData = {
+          datasets: [{
+            data: [0], // Initial count, will be updated via AJAX
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(153, 102, 255, 0.5)',
+              'rgba(255, 159, 64, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+          }],
+          labels: [
+            'Pink',
+            'Blue',
+            'Yellow',
+          ]
+        };
+
+        var doughnutPieOptions = {
+          responsive: true,
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+        };
+
+        // Fetch the count of orders requested 3 days ago from the server
+        $.ajax({
+          url: 'get_new_orders.php', // Replace with the actual path to your server-side script
+          success: function(data) {
+            // Update the doughnutPieData with the fetched count
+            doughnutPieData.datasets[0].data = [data];
+
+            // Update the HTML element with the count
+            $('#newOrdersCount').text(data);
+
+            // Create the doughnut chart
+            if ($("#doughnutChart").length) {
+              var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
+              var doughnutChart = new Chart(doughnutChartCanvas, {
+                type: 'doughnut',
+                data: doughnutPieData,
+                options: doughnutPieOptions
+              });
+            }
+          }
+        });
+      });
+
     </script>
     <!-- End custom js for this page -->
   </body>
