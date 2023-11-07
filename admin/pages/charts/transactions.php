@@ -186,8 +186,18 @@ if (empty($user_id)) {
                                               <td><?= $row['NameofEvent'] ?></td>
                                               <td><?= $row['Org'] ?></td>
                                               <td><?= $row['ResponsiblePerson'] ?></td>
-
-                                              <td><?= $row['status'] ?></td>
+                                              <td> <div class="dropdown">
+                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 130px;"> Select Status </button>
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item dropdown-item-approval" >For Approval</a>
+                                <a class="dropdown-item dropdown-item-confirmed" >Confirmed</a>
+                                <a class="dropdown-item dropdown-item-delivered" >Delivered</a>
+                                <a class="dropdown-item dropdown-item-unpaid" >Unpaid</a>
+                                <a class="dropdown-item dropdown-item-completed" >Completed</a>
+                                <a class="dropdown-item dropdown-item-canceled" >Canceled</a>
+                              </div>
+                            </div>
+                                            </td>
                                               <td><?= $row['Remarks'] ?></td>
                                               <td  style="width: 200px;" class="column7 action-cell">
                                             <button style="width: 125px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
@@ -199,15 +209,15 @@ if (empty($user_id)) {
                                               <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
                                               <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
 
-                        <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
-                          <a href="../../../generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
-                              <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
-                          </a>
-                          
-                      </button>
-                        <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
-                        <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
-                </td>
+                                                    <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
+                                                      <a href="../../../generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
+                                                          <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
+                                                      </a>
+                                                      
+                                                  </button>
+                                                    <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
+                                                    <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
+                    </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
