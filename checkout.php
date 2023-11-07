@@ -114,7 +114,7 @@ $allItems = implode(', ', $items);
           <h5><b>Total Amount Payable : </b> Php <?= number_format($grand_total,2) ?></h5>
         </div>
     <form action="action2.php" method="post" id="placeOrder" enctype="multipart/form-data">
-         <input type="hidden" name="products" value="<?= $allItems; ?>">
+         <input type="hidden" name="products" value="<?= $allItems; ?>" required>
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -123,49 +123,45 @@ $allItems = implode(', ', $items);
             </div>
           </div>
           <div class="form-group">
-            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Office/Department/Organization:</label>
-            <select class="custom-select my-1 mr-sm-2" name="inlineFormCustomSelectPref" id="inlineFormCustomSelectPref">
-              <option selected>Choose...</option>
-              <?php
-              // Your database connection code
-              $databaseHost = 'localhost';
-              $databaseUsername = 'root';
-              $databasePassword = '';
-              $dbname = "rgo_db";
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Office/Department/Organization:</label>
+    <select class="custom-select my-1 mr-sm-2" name="inlineFormCustomSelectPref" id="inlineFormCustomSelectPref" readonly>
+        <?php
+        // Your database connection code
+        $databaseHost = 'localhost';
+        $databaseUsername = 'root';
+        $databasePassword = '';
+        $dbname = "rgo_db";
 
-              $conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $dbname);
+        $conn = new mysqli($databaseHost, $databaseUsername, $databasePassword, $dbname);
 
-              // Check the connection
-              if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-              }
+        // Check the connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-              // Define the column names
-              $columnNames = ["Campus", "CoE", "CAFAD", "CIT", "CICS"];
+        // Get the user ID from the session
+        // Replace '$_SESSION['user_id']' with the actual session variable holding the user ID
+        $user_id = $_SESSION['user_id'];
 
-              // Output column names as option values
-              foreach ($columnNames as $columnName) {
-                  echo "<option value='$columnName'>$columnName</option>";
-              }
+        // Query to fetch the user's name based on user ID
+        $query = "SELECT name FROM users WHERE user_id = $user_id";
+        $result = $conn->query($query);
 
-              // Get the data and populate options
-              $query = "SELECT * FROM org";
-              $result = $conn->query($query);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $user_name = $row['name'];
 
-              while ($row = $result->fetch_assoc()) {
-                  foreach ($columnNames as $columnName) {
-                      $value = $row[$columnName];
-                      if (!empty($value)) {
-                          echo "<option value='$value'>$value</option>";
-                      }
-                  }
-              }
+            echo "<option value='$user_name' selected>$user_name</option>";
+        } else {
+            echo "Not logged in, please login again";
+        }
 
-              // Close the database connection
-              $conn->close();
-              ?>
-            </select>
-          </div>
+        // Close the database connection
+        $conn->close();
+        ?>
+    </select>
+</div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputPerson">Responsible Person:</label>

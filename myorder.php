@@ -228,7 +228,19 @@ if (empty($user_id)) {
     <span>&gt;</span>
     My Orders
 </div>
-
+<td>
+                            <div class="dropdown">
+                              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 130px;"> Select Status </button>
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item dropdown-item-approval" >For Approval</a>
+                                <a class="dropdown-item dropdown-item-confirmed" >Confirmed</a>
+                                <a class="dropdown-item dropdown-item-delivered" >Delivered</a>
+                                <a class="dropdown-item dropdown-item-unpaid" >Unpaid</a>
+                                <a class="dropdown-item dropdown-item-completed" >Completed</a>
+                                <a class="dropdown-item dropdown-item-canceled" >Canceled</a>
+                              </div>
+                            </div>
+                          </td>
 
 <style>
     .table100 {
