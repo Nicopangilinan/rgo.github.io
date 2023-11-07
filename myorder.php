@@ -301,85 +301,7 @@ if (empty($user_id)) {
   </style>
 </head>
 <body>
-<div id="rowFilesModal" class="modal2">
-                <div class="modal-content2">
-                <span class="close" onclick="closeModal2()">&times;</span>
-                    <a>Select Files To upload (PDF files only)</a>
-                    <div class="table-responsive-xl">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Transactions (Receivable)</th>
-                                    <th>Filename (PDF only)</th>
-                                    <th>View/Download</th>
-                                    <th>Upload</th>
-                                    <th>Delete</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                <tr id="purchaseRequestRow">
-                                    <td>1</td>
-                                    <td>Purchase Request</td>
-                                    <td><input type="file" id="purchaseRequestFile" accept=".pdf"></td>
-                                    <td><button onclick="viewFile('purchaseRequestFile')">View</button></td>
-                                    <td><button onclick="uploadFile('purchaseRequestFile')">Upload</button></td>
-                                    <td><button onclick="deleteFile('purchaseRequestFile')">Delete</button></td>
-                                    <td><button onclick="changeStatus('purchaseRequestFile')">Change Status</button></td>
-                                </tr>
-                                
-                                <!-- Repeat the structure for other rows -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+
   <div class="limiter">
     <div class="container-table100">
       <div class="wrap-table100">
@@ -448,14 +370,57 @@ if (empty($user_id)) {
                 </div>
             </div>
                   <!-- DOCUMENT MODAL -->
+                  <div id="rowFilesModal" class="modal2">
+                <div class="modal-content2">
+                <span class="close" onclick="closeModal2()">&times;</span>
+                <h4>Select Files To upload (PDF files only)</h4>
+                
+                                <form action="document.php" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="row_id" id="row_id_input" value="">
+                                    <div class="form-group">
+                                        <label for="purchase_request">Purchase Request:</label>
+                                        <input type="file" name="purchase_request" id="purchase_request" accept=".pdf">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="oras_pre">ORaS/PRE:</label>
+                                        <input type="file" name="oras_pre" id="oras_pre" accept=".pdf">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="project_activity">Project/Activity:</label>
+                                        <input type="file" name="project_activity" id="project_activity" accept=".pdf">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="budget_proposal">Budget Proposal:</label>
+                                        <input type="file" name="budget_proposal" id="budget_proposal" accept=".pdf">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="delivery_receipt">Delivery Receipt:</label>
+                                        <input type="file" name="delivery_receipt" id="delivery_receipt" accept=".pdf">
+                                    </div>
+                                    <button  type="submit" value="Submit" class="btn btn-primary btn-rounded btn-fw">Submit Files</button>
+                                </form>                  
             
 
         </div>
       </div>
     </div>
   </div>
-  
-
+  <script src="admin/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="admin/assets/js/off-canvas.js"></script>
+    <script src="admin/assets/js/hoverable-collapse.js"></script>
+    <script src="admin/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="admin/assets/js/file-upload.js"></script>
+    <script src="admin/assets/js/typeahead.js"></script>
+    <script src="admin/assets/js/select2.js"></script>
+  <script src="admin/assets/js/file-upload.js"></script>
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -530,16 +495,23 @@ function showRowDetails(rowId) {
     }
 </script>
 <script>
-  function showRowFiles(rowId) {
-      // Show the modal
-      const modal = document.getElementById("rowFilesModal");
+// Function to open the modal and set the row ID
+function showRowFiles(rowId) {
+    // Set the row ID in the hidden input
+    const rowIdInput = document.getElementById("row_id_input");
+    rowIdInput.value = rowId;
+
+    // Show the modal
+    const modal = document.getElementById("rowFilesModal");
     modal.style.display = "block";
 }
-    // Function to close the modal
-    function closeModal2() {
-        const modal = document.getElementById("rowFilesModal");
-        modal.style.display = "none";
-    }
+
+// Function to close the modal
+function closeModal2() {
+    const modal = document.getElementById("rowFilesModal");
+    modal.style.display = "none";
+}
+
 </script>
 <script>
 // JavaScript function to trigger the confirmation dialog
@@ -571,32 +543,7 @@ function confirmDelete(orderId) {
 	  gtag('config', 'UA-23581568-13');
 	</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"816a35a4d8aa6017","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.8.0","si":100}' crossorigin="anonymous"></script>
-<script>
-    // JavaScript functions to handle button clicks
-    function handleMagnifyingGlassClick() {
-      // Handle Magnifying Glass button click
-      // Add your code here
-    }
 
-    function handleUploadClick() {
-      // Handle Upload button click
-      // Add your code here
-    }
-
-    function handleXClick() {
-    // Handle X button click
-    const isConfirmed = confirm('Are you sure you want to delete record?');
-
-    if (isConfirmed) {
-      // The user confirmed the deletion, you can perform the deletion action here.
-      // Add your code for deleting the item.
-      // For example, you can use AJAX to send a request to the server to delete the item.
-    } else {
-      // The user canceled the deletion.
-      // You can add code here to handle the cancellation.
-    }
-    }
-  </script>
   <script>
   document.getElementById('logout-link').addEventListener('click', function (e) {
     e.preventDefault();
