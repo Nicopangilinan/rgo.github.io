@@ -308,68 +308,68 @@ if (empty($user_id)) {
                   <div class="card-body">
                     <h4 class="card-title">Order Records</h4>
                           <?php if ($result->num_rows > 0) : ?>
-    <div class="table-responsive-xl">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Order ID</th>
-                    <th>Event Name</th>
-                    <th>Office/Department/Org</th>
-                    <th>Person Responsible</th>
-                    <th>Status</th>
-                    <th>Remarks</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()) : ?>
-                    <tr> 
-                        <td><?= $row['DateRequested'] ?></td>
-                        <td><?= $row['id'] ?></td>
-                        <td><?= $row['NameofEvent'] ?></td>
-                        <td><?= $row['Org'] ?></td>
-                        <td><?= $row['ResponsiblePerson'] ?></td>
+                          <div class="table-responsive-xl">
+                              <table class="table">
+                                  <thead>
+                                      <tr>
+                                          <th>Date</th>
+                                          <th>Order ID</th>
+                                          <th>Event Name</th>
+                                          <th>Office/Department/Org</th>
+                                          <th>Person Responsible</th>
+                                          <th>Status</th>
+                                          <th>Remarks</th>
+                                          <th>Actions</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <?php while ($row = $result->fetch_assoc()) : ?>
+                                          <tr> 
+                                              <td><?= $row['DateRequested'] ?></td>
+                                              <td><?= $row['id'] ?></td>
+                                              <td><?= $row['NameofEvent'] ?></td>
+                                              <td><?= $row['Org'] ?></td>
+                                              <td><?= $row['ResponsiblePerson'] ?></td>
 
-                        <td><?= $row['status'] ?></td>
-                        <td><?= $row['Remarks'] ?></td>
-                        <td  style="width: 200px;" class="column7 action-cell">
-                      <button style="width: 125px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
-                          onclick="showRowDetails(<?= $row['id'] ?>)">
-                          <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details
-                      </button>
+                                              <td><?= $row['status'] ?></td>
+                                              <td><?= $row['Remarks'] ?></td>
+                                              <td  style="width: 200px;" class="column7 action-cell">
+                                            <button style="width: 125px; text-align: left; margin: 2px;" type="button" class="btn btn-outline-primary btn-icon-text"
+                                                onclick="showRowDetails(<?= $row['id'] ?>)">
+                                                <i class="mdi mdi-magnify btn-icon-prepend"></i> View Details
+                                            </button>
 
 
-                        <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
-                        <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
+                                              <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
+                                              <i class="mdi mdi-upload btn-icon-prepend"></i> Upload </button>
 
-                        <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
-                          <a href="../../../generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
-                              <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
-                          </a>
-                          
-                      </button>
-                        <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
-                        <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
-                </td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>No orders found.</p>
-    <?php endif; ?>
-    </div>
-    <!-- Modal for displaying row details -->
-<div id="rowDetailsModal" class="modal" style="overflow:auto;">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Order Details</h2>
-        <div id="rowDetailsContent">
-            <!-- Content will be loaded here via JavaScript -->
-        </div>
-    </div>
-</div>
+                                              <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
+                                                <a href="../../../generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
+                                                    <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt
+                                                </a>
+                                                
+                                            </button>
+                                              <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
+                                              <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
+                                      </td>
+                                          </tr>
+                                      <?php endwhile; ?>
+                                  </tbody>
+                              </table>
+                          <?php else : ?>
+                              <p>No orders found.</p>
+                          <?php endif; ?>
+                        </div>
+                <!-- Modal for displaying row details -->
+            <div id="rowDetailsModal" class="modal" style="overflow:auto;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h2>Order Details</h2>
+                    <div id="rowDetailsContent">
+                        <!-- Content will be loaded here via JavaScript -->
+                    </div>
+                </div>
+            </div>
                   </div>
                 </div>
               </div>
