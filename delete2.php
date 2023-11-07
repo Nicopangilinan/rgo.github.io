@@ -11,7 +11,7 @@ if (isset($_POST['order_id'])) {
 
     if ($stmt->execute()) {
         // Deletion successful
-        header('Location: admin/pages/charts/transactions.php'); // Redirect to the previous page after successful deletion
+        header('Location: myorder.php'); // Redirect to the previous page after successful deletion
     } else {
         // Error deleting the order
         echo "Error: " . $stmt->error;
