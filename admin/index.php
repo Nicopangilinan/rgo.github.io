@@ -109,13 +109,13 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="pages/charts/chartjs.html">
+              <a class="nav-link" href="pages/charts/transactions.php">
                 <span class="icon-bg"><i class="mdi mdi-bulletin-board menu-icon"></i></span>
                 <span class="menu-title">Transactions</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/tables/basic-table.html">
+              <a class="nav-link" href="pages/tables/foodpackage.php">
                 <span class="icon-bg"><i class="mdi mdi-food menu-icon"></i></span>
                 <span class="menu-title">Food Packages</span>
               </a>
