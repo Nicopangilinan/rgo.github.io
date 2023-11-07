@@ -127,10 +127,7 @@ if (empty($user_id)) {
           <ul class="navbar-nav navbar-nav-right">
             
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <div class="nav-profile-img">
-                  <img src="../../assets/images/faces/face28.png" alt="image">
-                </div>
+  
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black">RGO Admin</p>
                 </div>
