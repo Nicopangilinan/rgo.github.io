@@ -1,3 +1,4 @@
+
 <?php
 // Database connection details
 $databaseHost = 'localhost';
@@ -13,18 +14,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
-    $productId = $_GET['id'];
-    $sql = "SELECT * FROM product WHERE id = $productId";
-    $result = $conn->query($sql);
+// Retrieve orders for the logged-in user
+session_start();
+$user_id = $_SESSION['user_id'];
 
-    if ($result->num_rows > 0) {
-        $productDetails = $result->fetch_assoc();
-        echo json_encode($productDetails);
-    } else {
-        echo json_encode(['error' => 'Product not found']);
-    }
+if (empty($user_id)) {
+    // Handle the case where user_id is empty
+    echo "User ID is empty. Check your login process.";
 } else {
-    echo json_encode(['error' => 'Invalid request']);
+    if ($_GET['action'] == 'fetchOrderData') {
+        $rowId = $_GET['rowId']; // Retrieve rowId from GET parameters
+        $sql = "SELECT * FROM product WHERE id = '$rowId'"; // Use rowId in your SQL query
+        $result = $conn->query($sql);
+
+        if ($result) {
+            $orderData = $result->fetch_assoc();
+            // Output the order data as JSON
+            header('Content-Type: application/json');
+            echo json_encode($orderData);
+        } else {
+            // Handle the case where the query fails
+            echo "Error fetching order data: " . $conn->error;
+        }
+    }
 }
 ?>

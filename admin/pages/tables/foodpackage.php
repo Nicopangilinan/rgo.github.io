@@ -52,6 +52,59 @@ if (empty($user_id)) {
       .table-responsive-xl {
       max-width: 100%; /* Adjust the maximum height as needed */
       overflow-y: auto;}
+      /* Styles for the modals */
+      .modal {
+          display: none; /* Hidden by default */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background overlay */
+      }
+
+      .modal-content {
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          position: relative;
+          margin: 10% auto; /* Centered vertically and horizontally */
+          padding: 20px;
+          width: 70%;
+      }
+
+      /* Close button style */
+      .close {
+          color: #555;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+      }
+
+      .close:hover {
+          color: #000;
+      }
+
+      /* Form style */
+      .form-group {
+          margin: 10px 0;
+      }
+
+      /* Button style */
+      #but {
+          background-color: #007BFF;
+          color: #fff;
+          border: none;
+          border-radius: 3px;
+          padding: 10px 20px;
+          cursor: pointer;
+      }
+
+      #but:hover {
+          background-color: #0056b3;
+      }
+
     </style>
   </head>
   <body>
@@ -119,94 +172,7 @@ if (empty($user_id)) {
                 </div>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
-                <span class="count-symbol bg-success"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                <h6 class="p-3 mb-0 bg-primary text-white py-4">Messages</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../assets/images/faces/face4.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                    <p class="text-gray mb-0"> 1 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../assets/images/faces/face2.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
-                    <p class="text-gray mb-0"> 15 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <img src="../../assets/images/faces/face3.jpg" alt="image" class="profile-pic">
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
-                    <p class="text-gray mb-0"> 18 Minutes ago </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
-                <span class="count-symbol bg-danger"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 class="p-3 mb-0 bg-primary text-white py-4">Notifications</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-calendar"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-warning">
-                      <i class="mdi mdi-settings"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
-                    <p class="text-gray ellipsis mb-0"> Update dashboard </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-info">
-                      <i class="mdi mdi-link-variant"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
-                    <p class="text-gray ellipsis mb-0"> New admin wow! </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-              </div>
-            </li>
+            
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -319,10 +285,9 @@ if (empty($user_id)) {
                                             </button>
 
 
-                                              <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
-                                              <i class="mdi mdi-upload btn-icon-prepend"></i> Edit </button>
-
-                                         
+                                            <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text" onclick="openEditModal(<?= $row['id'] ?>, '<?= $row['product_name'] ?>', <?= $row['product_price'] ?>)">
+                                                <i class="mdi mdi-upload btn-icon-prepend"></i> Edit
+                                            </button>
                                       </td>
                                           </tr>
                                       <?php endwhile; ?>
@@ -333,7 +298,38 @@ if (empty($user_id)) {
                           <?php endif; ?>
                         </div>
               
-              
+            <!-- Modal for displaying row details -->
+          <div id="rowDetailsModal" class="modal">
+              <div class="modal-content">
+                  <span class="close" onclick="closeModal()">&times;</span>
+                  <h2>Product Details</h2>
+                  <div id="rowDetailsContent">
+                      <!-- Content will be loaded here via JavaScript -->
+                  </div>
+              </div>
+          </div>
+
+          <!-- Modal for editing product details -->
+          <div id="editProductModal" class="modal">
+              <div class="modal-content">
+                  <span class="close" onclick="closeEditModal()">&times;</span>
+                  <h2>Edit Product Details</h2>
+                  <form id="editProductForm" action="edit_product.php" method="post">
+                      <input type="hidden" id="editProductId" name="product_id">
+                      <div class="form-group">
+                          <label for="editProductName">Product Name:</label>
+                          <input type="text" id="editProductName" name="product_name" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="editProductPrice">Price:</label>
+                          <input type="number" id="editProductPrice" name="product_price" class="form-control">
+                      </div>
+                      <button type="submit" id="but"class="btn btn-primary">Save Changes</button>
+                  </form>
+              </div>
+          </div>
+
+
               
               
             </div>
@@ -354,6 +350,145 @@ if (empty($user_id)) {
       </div>
       <!-- page-body-wrapper ends -->
     </div>
+    <script>
+          // JavaScript code to update the button text and color when an item is selected
+          var buttons = document.querySelectorAll('.dropdown-toggle');
+        
+          buttons.forEach(function(button) {
+            button.addEventListener('click', function () {
+              var dropdownId = this.getAttribute('id');
+              var dropdownMenu = document.querySelector('[aria-labelledby="' + dropdownId + '"]');
+              var prevColorClass = button.classList[2]; // Get the previous color class
+        
+              dropdownMenu.querySelectorAll('.dropdown-item').forEach(function (item) {
+                item.addEventListener('click', function () {
+                  var selectedText = this.textContent;
+                  var itemColorClass = this.classList[1]; // Get the color class
+                  button.textContent = selectedText;
+        
+                  // Remove the previous color class from the button
+                  if (prevColorClass) {
+                    button.classList.remove(prevColorClass);
+                  }
+        
+                  button.classList.add(itemColorClass); // Add the new color class
+                  this.classList.add('selected'); // Style the selected item
+                  prevColorClass = itemColorClass; // Update the previous color class
+                });
+              });
+            });
+          });
+        </script>
+        
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../assets/js/off-canvas.js"></script>
+        <script src="../../assets/js/hoverable-collapse.js"></script>
+        <script src="../../assets/js/misc.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="../../assets/js/chart.js"></script>
+        <!-- End custom js for this page -->
+        <script>
+    function showRowDetails(rowId) {
+        // Make an AJAX request to fetch data from the database
+        $.ajax({
+            url: 'get_product_details.php?action=fetchOrderData', // Replace with the actual URL to your PHP script
+            method: 'GET',
+            data: { rowId: rowId }, // Pass any necessary data to identify the specific row
+
+            success: function (data) {
+                // Assuming 'data' contains the fetched database row
+
+                // Populate the modal with the fetched data
+                document.getElementById("rowDetailsContent").innerHTML = `
+               
+        <p><strong>ID:</strong> ${data.id}</p>
+        <p><strong>Product:</strong> ${data.product_name}</p>
+        <p><strong>Price:</strong> ${data.product_price}</p>
+        <p><strong>Product Code:</strong> ${data.product_code}</p>
+        <p><strong>Type:</strong> ${data.product_type}</p>`;
+            },
+            error: function (error) {
+                console.log("Error fetching data from the database: " + error);
+            }
+        });
+
+        // Show the modal
+        const modal = document.getElementById("rowDetailsModal");
+        modal.style.display = "block";
+    }
+        // Function to close the modal
+        function closeModal() {
+            const modal = document.getElementById("rowDetailsModal");
+            modal.style.display = "none";
+        }
+    </script>
+    <script>
+    // JavaScript function to trigger the confirmation dialog
+    function confirmDelete(orderId) {
+        if (confirm("Are you sure you want to delete this order?")) {
+            // If the user confirms, submit the form to delete the row
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '../../../delete.php';
+            
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'order_id';
+            input.value = orderId;
+            
+            form.appendChild(input);
+            document.body.appendChild(form);
+            
+            form.submit();
+        }
+    }
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+      </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('logout-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          if (confirm('Are you sure you want to logout?')) {
+            window.location.href = '../../../logout.php'; // Redirect to logout script
+          }
+        });
+      });
+    </script>
+    <script>
+      function openEditModal(productId, productName, productPrice) {
+          const modal = document.getElementById("editProductModal");
+          const productIdField = document.getElementById("editProductId");
+          const productNameField = document.getElementById("editProductName");
+          const productPriceField = document.getElementById("editProductPrice");
+
+          productIdField.value = productId;
+          productNameField.value = productName;
+          productPriceField.value = productPrice;
+
+          modal.style.display = "block";
+      }
+
+      function closeEditModal() {
+          const modal = document.getElementById("editProductModal");
+          modal.style.display = "none";
+      }
+
+    </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
