@@ -244,7 +244,7 @@ if (empty($user_id)) {
           <ul class="nav">
             <li class="nav-item nav-category">Admin Dashboard</li>
             <li class="nav-item">
-              <a class="nav-link" href="../../index.php">
+              <a class="nav-link" href="../../admin.php">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
               </a>
