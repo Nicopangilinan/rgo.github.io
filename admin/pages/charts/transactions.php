@@ -76,90 +76,7 @@ if (empty($user_id)) {
       .table-responsive-xl {
       max-width: 100%; /* Adjust the maximum height as needed */
       overflow-y: auto;
-       /* Styles for the modals */
-       .modal {
-          display: none; /* Hidden by default */
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background overlay */
-      }
-
-      .modal-content {
-          background-color: #fff;
-          border-radius: 5px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          position: relative;
-          margin: 10% auto; /* Centered vertically and horizontally */
-          padding: 20px;
-          width: 70%;
-      }
-
-      /* Close button style */
-      .close {
-          color: #555;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-      }
-
-      .close:hover {
-          color: #000;
-      }
-
-      /* Form style */
-      .form-group {
-          margin: 10px 0;
-      }
-
-      /* Button style */
-      #but {
-          background-color: #007BFF;
-          color: #fff;
-          border: none;
-          border-radius: 3px;
-          padding: 10px 20px;
-          cursor: pointer;
-      }
-
-      #but:hover {
-          background-color: #0056b3;
-      }
 }
-  </style>
-  <style>
-    .btn-yellow {
-      background-color: yellow; /* Change to your desired background color */
-      color: black; /* Change to your desired text color */
-    }
-
-    .btn-blue {
-      background-color: blue; /* Change to your desired background color */
-      color: white; /* Change to your desired text color */
-    }
-
-    .btn-orange {
-      background-color: orange; /* Change to your desired background color */
-      color: white; /* Change to your desired text color */
-    }
-
-    .btn-red {
-      background-color: red; /* Change to your desired background color */
-      color: white; /* Change to your desired text color */
-    }
-
-    .btn-green {
-      background-color: green; /* Change to your desired background color */
-      color: white; /* Change to your desired text color */
-    }
-
-    .btn-gray {
-      background-color: gray; /* Change to your desired background color */
-      color: white; /* Change to your desired text color */
-    }
   </style>
   </head>
   <body>
@@ -247,7 +164,7 @@ if (empty($user_id)) {
                   <div class="card-body">
                     <h4 class="card-title">Order Records</h4>
                           <?php if ($result->num_rows > 0) : ?>
-                          <div id="orderTableContainer" class="table-responsive-xl">
+                          <div class="table-responsive-xl">
                               <table class="table">
                                   <thead>
                                       <tr>
@@ -283,12 +200,12 @@ if (empty($user_id)) {
                                                     <?= $row['status'] ?> <!-- Display the current status from the database -->
                                                   </button>
                                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton<?= $row['id'] ?>">
-                                                    <a class="dropdown-item dropdown-item-approval" onclick="updateStatus(<?= $row['id'] ?>, 'Approval In Progress')" style="cursor:pointer;">For Approval</a>
-                                                    <a class="dropdown-item dropdown-item-confirmed" onclick="updateStatus(<?= $row['id'] ?>, 'Confirmed')" style="cursor:pointer;">Confirmed</a>
-                                                    <a class="dropdown-item dropdown-item-delivered" onclick="updateStatus(<?= $row['id'] ?>, 'Delivered')"style="cursor:pointer;">Delivered</a>
-                                                    <a class="dropdown-item dropdown-item-unpaid" onclick="updateStatus(<?= $row['id'] ?>, 'Unpaid')"style="cursor:pointer;">Unpaid</a>
-                                                    <a class="dropdown-item dropdown-item-completed" onclick="updateStatus(<?= $row['id'] ?>, 'Completed')"style="cursor:pointer;">Completed</a>
-                                                    <a class="dropdown-item dropdown-item-canceled" onclick="updateStatus(<?= $row['id'] ?>, 'Canceled')"style="cursor:pointer;">Canceled</a>
+                                                    <a class="dropdown-item dropdown-item-approval" onclick="updateStatus(<?= $row['id'] ?>, 'Approval In Progress')">For Approval</a>
+                                                    <a class="dropdown-item dropdown-item-confirmed" onclick="updateStatus(<?= $row['id'] ?>, 'Confirmed')">Confirmed</a>
+                                                    <a class="dropdown-item dropdown-item-delivered" onclick="updateStatus(<?= $row['id'] ?>, 'Delivered')">Delivered</a>
+                                                    <a class="dropdown-item dropdown-item-unpaid" onclick="updateStatus(<?= $row['id'] ?>, 'Unpaid')">Unpaid</a>
+                                                    <a class="dropdown-item dropdown-item-completed" onclick="updateStatus(<?= $row['id'] ?>, 'Completed')">Completed</a>
+                                                    <a class="dropdown-item dropdown-item-canceled" onclick="updateStatus(<?= $row['id'] ?>, 'Canceled')">Canceled</a>
                                                   </div>
                                                 </div>
                                               </td>
@@ -301,9 +218,12 @@ if (empty($user_id)) {
                                             </button>
 
 
-                                              <button style="width: 140px; text-align: left; margin:2px; " type="button" class="btn btn-outline-success btn-icon-text">
+                                              <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-success btn-icon-text">
                                               <i class="mdi mdi-upload btn-icon-prepend"></i> View Documents </button>
 
+                                                    <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-warning btn-icon-text">
+                                                      <a href="../../../generate_receipt.php?order_id=<?= $row['id'] ?>" style="text-decoration: none; color: inherit;">
+                                                          <i class="mdi mdi-file-document-box btn-icon-prepend"></i> View Receipt</a></button>
                                                     <button style="width: 125px; text-align: left; margin:2px;" type="button" class="btn btn-outline-danger btn-icon-text" onclick="confirmDelete(<?= $row['id'] ?>)">
                                                     <i class="mdi mdi-delete btn-icon-prepend"></i> Delete </button>
                                             </td>
@@ -314,42 +234,41 @@ if (empty($user_id)) {
                             <?php else : ?>
                                 <p>No orders found.</p>
                             <?php endif; ?>
-                          
                             <script>
                               function updateStatus(orderId, newStatus) {
+                                // Make an AJAX request to update the status
                                 $.ajax({
                                   url: 'update_status.php', // Replace with the actual URL to your PHP script for updating status
                                   method: 'POST',
                                   data: { orderId: orderId, newStatus: newStatus },
                                   success: function (response) {
                                     if (response === 'success') {
-                                      // Store the updated status and its corresponding color class in local storage
-                                      localStorage.setItem(`status_${orderId}`, newStatus);
+                                      // Update the button text and color
+                                      const button = document.getElementById('dropdownMenuButton' + orderId);
+                                      button.textContent = newStatus;
+                                      button.classList.remove('btn-yellow', 'btn-blue', 'btn-orange', 'btn-red', 'btn-green', 'btn-gray');
                                       switch (newStatus) {
                                         case 'Approval In Progress':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-yellow');
+                                          button.classList.add('btn-yellow');
                                           break;
                                         case 'Confirmed':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-blue');
+                                          button.classList.add('btn-blue');
                                           break;
                                         case 'Delivered':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-orange');
+                                          button.classList.add('btn-orange');
                                           break;
                                         case 'Unpaid':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-red');
+                                          button.classList.add('btn-red');
                                           break;
                                         case 'Completed':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-green');
+                                          button.classList.add('btn-green');
                                           break;
                                         case 'Canceled':
-                                          localStorage.setItem(`color_${orderId}`, 'btn-gray');
+                                          button.classList.add('btn-gray');
                                           break;
                                         default:
                                           break;
                                       }
-                                      // Update the button's class based on the new status
-                                      const button = document.getElementById(`dropdownMenuButton${orderId}`);
-                                      button.className = `btn btn-primary dropdown-toggle ${localStorage.getItem(`color_${orderId}`)}`;
                                     } else {
                                       // Handle error
                                       alert('Status update failed. Please try again.');
@@ -361,21 +280,7 @@ if (empty($user_id)) {
                                 });
                               }
 
-                              // On page load, check for and apply stored color classes
-                              document.addEventListener('DOMContentLoaded', function () {
-                                // Iterate through your orders
-                                const orders = /* Retrieve your order data */;
-                                orders.forEach((order) => {
-                                  const orderId = order.id;
-                                  const storedColorClass = localStorage.getItem(`color_${orderId}`);
-                                  if (storedColorClass) {
-                                    const button = document.getElementById(`dropdownMenuButton${orderId}`);
-                                    button.className = `btn btn-primary dropdown-toggle ${storedColorClass}`;
-                                  }
-                                });
-                              });
                             </script>
-
                             </div>
                             <!-- Modal for displaying row details -->
                         <div id="rowDetailsModal" class="modal" style="overflow:auto;">
@@ -578,4 +483,4 @@ function confirmDelete(orderId) {
 </script>
 
   </body>
-</html>
+</html> 
