@@ -27,9 +27,9 @@
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo"  href="../../index.html"><img src="../../assets/images/rgow.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/rgow2.png" alt="logo" /></a>
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo"  href="../../index.html"><img src="/rgo.github.io/admin/assets/images/rgow.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="/rgo.github.io/admin/assets/images/rgow2.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -86,19 +86,7 @@
               </li>
             </li>
             <li class="nav-item nav-category">Settings</li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
-                  <span class="menu-title">Settings</span>
-                </a>
-              </div>
-            </li>
-            <li class="nav-item sidebar-user-actions">
-              <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
-                  <span class="menu-title">Take Tour</span></a>
-              </div>
-            </li>
+            
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
@@ -135,29 +123,28 @@
                           <div class="card-body text-center">
                             <h5 class="mb-2 text-dark font-weight-normal">New Orders</h5>
                             <h2 class="mb-4 text-dark font-weight-bold">--.--</h2>
-                            <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-basket-fill icon-md absolute-center text-dark"></i></div>
                             <p class="mt-4 mb-0">Completed</p>
                             <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
                           </div>
                         </div>
                       </div>
                       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-                        <div class="card">
-                          <div class="card-body text-center">
-                            <h5 class="mb-2 text-dark font-weight-normal">Pending Orders</h5>
-                            <h2 class="mb-4 text-dark font-weight-bold">--.--</h2>
-                            <div class="dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-av-timer icon-md absolute-center text-dark"></i></div>
-                            <p class="mt-4 mb-0">Increased since yesterday</p>
-                            <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
-                          </div>
+                      <div class="card">
+                        <div class="card-body text-center">
+                          
+                        <i class="mdi mdi-av-timer icon-lg text-primary" ></i>
+                          <h5 class="mb-2 text-dark font-weight-normal">Pending Orders</h5>
+                          <h1 class="mb-4 text-danger font-weight-bolder"><span id="pendingOrdersCount">--</span></h1>
+                          <p class="mt-4 mb-0">Increased since yesterday</p>
+                          <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
                         </div>
                       </div>
+                    </div>
                       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
                         <div class="card">
                           <div class="card-body text-center">
                             <h5 class="mb-2 text-dark font-weight-normal">Delivered Orders</h5>
                             <h2 class="mb-4 text-dark font-weight-bold">--.--</h2>
-                            <div class="dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-clipboard-check icon-md absolute-center text-dark"></i></div>
                             <p class="mt-4 mb-0">Increased since yesterday</p>
                             <h3 class="mb-0 font-weight-bold mt-2 text-dark">--</h3>
                           </div>
@@ -234,9 +221,70 @@
     <script src="assets/js/off-canvas.js"></script>
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/misc.js"></script>
+    
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
+    <script>
+      $(function() {
+        var doughnutPieData = {
+          datasets: [{
+            data: [0], // Initial count, will be updated via AJAX
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.5)',
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
+              'rgba(153, 102, 255, 0.5)',
+              'rgba(255, 159, 64, 0.5)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+          }],
+          labels: [
+            'Pink',
+            'Blue',
+            'Yellow',
+          ]
+        };
+
+        var doughnutPieOptions = {
+          responsive: true,
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+        };
+
+        // Fetch the count of orders with "Approval In Progress" status from the server
+        $.ajax({
+          url: 'get_pending_orders.php', // Replace with the actual path to your server-side script
+          success: function(data) {
+            // Update the doughnutPieData with the fetched count
+            doughnutPieData.datasets[0].data = [data];
+
+            // Update the HTML element with the count
+            $('#pendingOrdersCount').text(data);
+
+            // Create the doughnut chart
+            if ($("#doughnutChart").length) {
+              var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
+              var doughnutChart = new Chart(doughnutChartCanvas, {
+                type: 'doughnut',
+                data: doughnutPieData,
+                options: doughnutPieOptions
+              });
+            }
+          }
+        });
+      });
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>
